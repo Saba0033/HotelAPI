@@ -1,0 +1,17 @@
+C:\Users\Saba\Desktop\HotelAPI\Services\bin\Debug\net9.0\HotelServices.deps.json
+C:\Users\Saba\Desktop\HotelAPI\Services\bin\Debug\net9.0\HotelServices.dll
+C:\Users\Saba\Desktop\HotelAPI\Services\bin\Debug\net9.0\HotelServices.pdb
+C:\Users\Saba\Desktop\HotelAPI\Services\obj\Debug\net9.0\HotelServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Saba\Desktop\HotelAPI\Services\obj\Debug\net9.0\HotelServices.AssemblyInfoInputs.cache
+C:\Users\Saba\Desktop\HotelAPI\Services\obj\Debug\net9.0\HotelServices.AssemblyInfo.cs
+C:\Users\Saba\Desktop\HotelAPI\Services\obj\Debug\net9.0\HotelServices.csproj.CoreCompileInputs.cache
+C:\Users\Saba\Desktop\HotelAPI\Services\obj\Debug\net9.0\HotelServices.dll
+C:\Users\Saba\Desktop\HotelAPI\Services\obj\Debug\net9.0\refint\HotelServices.dll
+C:\Users\Saba\Desktop\HotelAPI\Services\obj\Debug\net9.0\HotelServices.pdb
+C:\Users\Saba\Desktop\HotelAPI\Services\obj\Debug\net9.0\ref\HotelServices.dll
+C:\Users\Saba\Desktop\HotelAPI\Services\bin\Debug\net9.0\HotelModels.dll
+C:\Users\Saba\Desktop\HotelAPI\Services\bin\Debug\net9.0\HotelRepository.dll
+C:\Users\Saba\Desktop\HotelAPI\Services\bin\Debug\net9.0\HotelRepository.pdb
+C:\Users\Saba\Desktop\HotelAPI\Services\bin\Debug\net9.0\HotelModels.pdb
+C:\Users\Saba\Desktop\HotelAPI\Services\obj\Debug\net9.0\HotelServices.csproj.AssemblyReference.cache
+C:\Users\Saba\Desktop\HotelAPI\Services\obj\Debug\net9.0\HotelSer.87C547A7.Up2Date

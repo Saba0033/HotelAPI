@@ -1,0 +1,403 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\services\\genericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\interfaces\\igenericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\interfaces\\ihotelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5326B18-057A-4ECD-9FD3-CCB97DBED705}|HotelAPI.csproj|c:\\users\\saba\\desktop\\hotelapi\\hotelapi\\controllers\\roomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5326B18-057A-4ECD-9FD3-CCB97DBED705}|HotelAPI.csproj|solutionrelative:controllers\\roomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\services\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\interfaces\\iroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\dtos\\reservationdtos\\reservationforgetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\dtos\\reservationdtos\\reservationforcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\dtos\\roomdtos\\roomforgetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5326B18-057A-4ECD-9FD3-CCB97DBED705}|HotelAPI.csproj|c:\\users\\saba\\desktop\\hotelapi\\hotelapi\\controllers\\hotelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5326B18-057A-4ECD-9FD3-CCB97DBED705}|HotelAPI.csproj|solutionrelative:controllers\\hotelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53823B26-AFFC-4AA0-9623-1017C4B1FEA9}|..\\HotelRepository\\HotelAPI.Infrastructure.csproj|c:\\users\\saba\\desktop\\hotelapi\\hotelrepository\\implementations\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\services\\hotelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\dtos\\mapping\\mapsterconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C464E394-8E07-407D-9AEA-4F158DFF03C6}|..\\HotelModels\\HotelAPI.Domain.csproj|c:\\users\\saba\\desktop\\hotelapi\\hotelmodels\\entities\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5326B18-057A-4ECD-9FD3-CCB97DBED705}|HotelAPI.csproj|c:\\users\\saba\\desktop\\hotelapi\\hotelapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5326B18-057A-4ECD-9FD3-CCB97DBED705}|HotelAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\dtos\\reservationdtos\\reservationforupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C464E394-8E07-407D-9AEA-4F158DFF03C6}|..\\HotelModels\\HotelAPI.Domain.csproj|c:\\users\\saba\\desktop\\hotelapi\\hotelmodels\\entities\\manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53823B26-AFFC-4AA0-9623-1017C4B1FEA9}|..\\HotelRepository\\HotelAPI.Infrastructure.csproj|c:\\users\\saba\\desktop\\hotelapi\\hotelrepository\\data\\hotelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\dtos\\hoteldtos\\hotelforgetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\dtos\\managerdtos\\managerforgettingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\dtos\\managerdtos\\managerforcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\dtos\\hoteldtos\\hotelforcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53823B26-AFFC-4AA0-9623-1017C4B1FEA9}|..\\HotelRepository\\HotelAPI.Infrastructure.csproj|c:\\users\\saba\\desktop\\hotelapi\\hotelrepository\\data\\efhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B28AB3-BDD3-4C23-B2CD-A92AD5DEE011}|..\\Services\\HotelAPI.Application.csproj|c:\\users\\saba\\desktop\\hotelapi\\services\\dtos\\managerdtos\\managerforupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53823B26-AFFC-4AA0-9623-1017C4B1FEA9}|..\\HotelRepository\\HotelAPI.Infrastructure.csproj|c:\\users\\saba\\desktop\\hotelapi\\hotelrepository\\interfaces\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RoomController.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelAPI\\Controllers\\RoomController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RoomController.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelAPI\\Controllers\\RoomController.cs",
+              "RelativeToolTip": "Controllers\\RoomController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:38:43.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ReservationForGetDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ReservationDTOs\\ReservationForGetDTO.cs",
+              "RelativeDocumentMoniker": "..\\Services\\DTOs\\ReservationDTOs\\ReservationForGetDTO.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ReservationDTOs\\ReservationForGetDTO.cs",
+              "RelativeToolTip": "..\\Services\\DTOs\\ReservationDTOs\\ReservationForGetDTO.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T17:18:39.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IGenericService.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Interfaces\\IGenericService.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Interfaces\\IGenericService.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Interfaces\\IGenericService.cs",
+              "RelativeToolTip": "..\\Services\\Interfaces\\IGenericService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T11:59:00.428Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IHotelService.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Interfaces\\IHotelService.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Interfaces\\IHotelService.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Interfaces\\IHotelService.cs",
+              "RelativeToolTip": "..\\Services\\Interfaces\\IHotelService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADgvxIAAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:27:22.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IRoomService.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Interfaces\\IRoomService.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Interfaces\\IRoomService.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Interfaces\\IRoomService.cs",
+              "RelativeToolTip": "..\\Services\\Interfaces\\IRoomService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:48:49.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RoomService.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Services\\RoomService.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Services\\RoomService.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Services\\RoomService.cs",
+              "RelativeToolTip": "..\\Services\\Services\\RoomService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:27:18.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GenericService.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Services\\GenericService.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Services\\GenericService.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Services\\GenericService.cs",
+              "RelativeToolTip": "..\\Services\\Services\\GenericService.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAkwEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T11:48:45.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ReservationForCreateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ReservationDTOs\\ReservationForCreateDTO.cs",
+              "RelativeDocumentMoniker": "..\\Services\\DTOs\\ReservationDTOs\\ReservationForCreateDTO.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ReservationDTOs\\ReservationForCreateDTO.cs",
+              "RelativeToolTip": "..\\Services\\DTOs\\ReservationDTOs\\ReservationForCreateDTO.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T17:18:52.609Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RoomForGetDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\RoomDTOs\\RoomForGetDTO.cs",
+              "RelativeDocumentMoniker": "..\\Services\\DTOs\\RoomDTOs\\RoomForGetDTO.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\RoomDTOs\\RoomForGetDTO.cs",
+              "RelativeToolTip": "..\\Services\\DTOs\\RoomDTOs\\RoomForGetDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T16:40:13.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HotelController.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelAPI\\Controllers\\HotelController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HotelController.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelAPI\\Controllers\\HotelController.cs",
+              "RelativeToolTip": "Controllers\\HotelController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwBoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:44:15.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "MapsterConfig.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\Mapping\\MapsterConfig.cs",
+              "RelativeDocumentMoniker": "..\\Services\\DTOs\\Mapping\\MapsterConfig.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\Mapping\\MapsterConfig.cs",
+              "RelativeToolTip": "..\\Services\\DTOs\\Mapping\\MapsterConfig.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBoAAABoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:33:04.55Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HotelService.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Services\\HotelService.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Services\\HotelService.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\Services\\HotelService.cs",
+              "RelativeToolTip": "..\\Services\\Services\\HotelService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAIA5wB8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:24:13.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository\\Implementations\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "..\\HotelRepository\\Implementations\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository\\Implementations\\GenericRepository.cs",
+              "RelativeToolTip": "..\\HotelRepository\\Implementations\\GenericRepository.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAqwBgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T13:02:02.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA7wCIAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:35:50.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Room.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\Entities\\Room.cs",
+              "RelativeDocumentMoniker": "..\\HotelModels\\Entities\\Room.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\Entities\\Room.cs",
+              "RelativeToolTip": "..\\HotelModels\\Entities\\Room.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T17:08:42.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ReservationForUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ReservationDTOs\\ReservationForUpdateDTO.cs",
+              "RelativeDocumentMoniker": "..\\Services\\DTOs\\ReservationDTOs\\ReservationForUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ReservationDTOs\\ReservationForUpdateDTO.cs",
+              "RelativeToolTip": "..\\Services\\DTOs\\ReservationDTOs\\ReservationForUpdateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T17:19:09.06Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Manager.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\Entities\\Manager.cs",
+              "RelativeDocumentMoniker": "..\\HotelModels\\Entities\\Manager.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\Entities\\Manager.cs",
+              "RelativeToolTip": "..\\HotelModels\\Entities\\Manager.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T15:04:22.677Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "HotelContext.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository\\Data\\HotelContext.cs",
+              "RelativeDocumentMoniker": "..\\HotelRepository\\Data\\HotelContext.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository\\Data\\HotelContext.cs",
+              "RelativeToolTip": "..\\HotelRepository\\Data\\HotelContext.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAhwB0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T14:02:27.711Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "HotelForGetDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\HotelDTOs\\HotelForGetDTO.cs",
+              "RelativeDocumentMoniker": "..\\Services\\DTOs\\HotelDTOs\\HotelForGetDTO.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\HotelDTOs\\HotelForGetDTO.cs",
+              "RelativeToolTip": "..\\Services\\DTOs\\HotelDTOs\\HotelForGetDTO.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:55:13.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ManagerForGettingDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ManagerDTOs\\ManagerForGettingDTO.cs",
+              "RelativeDocumentMoniker": "..\\Services\\DTOs\\ManagerDTOs\\ManagerForGettingDTO.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ManagerDTOs\\ManagerForGettingDTO.cs",
+              "RelativeToolTip": "..\\Services\\DTOs\\ManagerDTOs\\ManagerForGettingDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T15:04:07.498Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ManagerForCreateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ManagerDTOs\\ManagerForCreateDTO.cs",
+              "RelativeDocumentMoniker": "..\\Services\\DTOs\\ManagerDTOs\\ManagerForCreateDTO.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ManagerDTOs\\ManagerForCreateDTO.cs",
+              "RelativeToolTip": "..\\Services\\DTOs\\ManagerDTOs\\ManagerForCreateDTO.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T15:15:24.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "HotelForCreateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\HotelDTOs\\HotelForCreateDTO.cs",
+              "RelativeDocumentMoniker": "..\\Services\\DTOs\\HotelDTOs\\HotelForCreateDTO.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\HotelDTOs\\HotelForCreateDTO.cs",
+              "RelativeToolTip": "..\\Services\\DTOs\\HotelDTOs\\HotelForCreateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:25:39.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "EFHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository\\Data\\EFHelper.cs",
+              "RelativeDocumentMoniker": "..\\HotelRepository\\Data\\EFHelper.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository\\Data\\EFHelper.cs",
+              "RelativeToolTip": "..\\HotelRepository\\Data\\EFHelper.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAAFIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:59:30.292Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ManagerForUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ManagerDTOs\\ManagerForUpdateDTO.cs",
+              "RelativeDocumentMoniker": "..\\Services\\DTOs\\ManagerDTOs\\ManagerForUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\DTOs\\ManagerDTOs\\ManagerForUpdateDTO.cs",
+              "RelativeToolTip": "..\\Services\\DTOs\\ManagerDTOs\\ManagerForUpdateDTO.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T15:15:34.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository\\Interfaces\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "..\\HotelRepository\\Interfaces\\IGenericRepository.cs",
+              "ToolTip": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository\\Interfaces\\IGenericRepository.cs",
+              "RelativeToolTip": "..\\HotelRepository\\Interfaces\\IGenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T13:02:23.652Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
