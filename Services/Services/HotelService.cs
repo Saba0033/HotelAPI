@@ -26,18 +26,11 @@ namespace HotelServices.Services
         public async Task<List<HotelForGetDTO>> GetAllAsyncIncludes(Expression<Func<Hotel, bool>> Predicate = null)
         {
             var result = await GRepository.GetAllAsync(Predicate,
-                h => h.Rooms, h => h.Manager);
+                h=> h.Rooms, h=> h.Manager);
             var mappedResult = result.Adapt<List<HotelForGetDTO>>();
             return mappedResult;
         }
 
-        public async Task<List<RoomForGetDTO>> GetFreeRoomsAsync(string id)
-        {
-            if (!Guid.TryParse(id, out var validId)) throw new ArgumentException("Invalid GUID format.");
-
-            var Hotel = await base.GetAsync(id);
-            return Hotel.Rooms.ToList();
-        }
 
         public async Task<List<HotelForGetDTO>> GetHotelsByCityAsync(string city)
         {

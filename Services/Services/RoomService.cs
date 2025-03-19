@@ -21,14 +21,14 @@ namespace HotelServices.Services
 
         public async Task<List<RoomForGetDTO>> GetAllFreeRoomsAsync(DateTime checkIn, DateTime checkOut)
         {
-            return await getFreeRoomsOfHotel(null,checkIn, checkOut);
+            return await getFreeRooms(null,checkIn, checkOut);
         }
         
 
         public async Task<List<RoomForGetDTO>> GetFreeRoomsOfHotel(string HotelId, DateTime checkIn, DateTime checkOut)
         {
             if (!Guid.TryParse(HotelId, out var validId)) throw new ArgumentException("Invalid GUID format.");
-            return await getFreeRoomsOfHotel(validId, checkIn, checkOut);
+            return await getFreeRooms(validId, checkIn, checkOut);
         }
 
         public async Task<List<RoomForGetDTO>> GetRoomsOfHotel(string HotelId)
@@ -38,12 +38,12 @@ namespace HotelServices.Services
             return await base.GetAllAsync(x => x.HotelId == validId);
         }
 
-        private async Task<List<RoomForGetDTO>> getFreeRoomsOfHotel(Guid? hotelId, DateTime checkIn, DateTime checkOut)
+        private async Task<List<RoomForGetDTO>> getFreeRooms(Guid? hotelId, DateTime checkIn, DateTime checkOut)
         {
-            return await base.GetAllAsync(
+            return await GetAllAsync(
                 room => (hotelId == null || room.HotelId == hotelId) &&
                         room.Reservations.All(resv => resv.CheckIn >= checkOut || resv.CheckOut <= checkIn),
-                room => room.Reservations);
+                r => r.Reservations);
         }
     }
 }

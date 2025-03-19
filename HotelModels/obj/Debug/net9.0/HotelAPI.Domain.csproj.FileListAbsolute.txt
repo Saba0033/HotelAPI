@@ -9,3 +9,5 @@ C:\Users\Saba\desktop\hotelAPI\HotelModels\obj\Debug\net9.0\HotelAPI.Domain.dll
 C:\Users\Saba\desktop\hotelAPI\HotelModels\obj\Debug\net9.0\refint\HotelAPI.Domain.dll
 C:\Users\Saba\desktop\hotelAPI\HotelModels\obj\Debug\net9.0\HotelAPI.Domain.pdb
 C:\Users\Saba\desktop\hotelAPI\HotelModels\obj\Debug\net9.0\ref\HotelAPI.Domain.dll
+C:\Users\Saba\desktop\hotelAPI\HotelModels\obj\Debug\net9.0\HotelAPI.Domain.csproj.AssemblyReference.cache
+C:\Users\Saba\desktop\hotelAPI\HotelModels\obj\Debug\net9.0\HotelAPI.Domain.sourcelink.json

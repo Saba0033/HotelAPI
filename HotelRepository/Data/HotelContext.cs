@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HotelAPI.Domain.Entities;
 using HotelModels.Entities;
 using HotelRepository.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelModels.Data
 {
-    public class HotelContext : DbContext
+    public class HotelContext : IdentityDbContext<Customer, IdentityRole<Guid>, Guid>
     {
         public HotelContext(DbContextOptions<HotelContext> options) : base(options)
         {
@@ -18,15 +21,29 @@ namespace HotelModels.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ConfigureEntities();
             modelBuilder.SeedData();
-            //modelBuilder.Entity<Hotel>()
-            //    .Navigation(h => h.Rooms)
-            //    .AutoInclude();  // Auto-include Rooms every time Hotel is queried
+            modelBuilder.Entity<Customer>(e => e.ToTable("Users/Customers"));
+            modelBuilder.Entity<IdentityRole<Guid>>(e => e.ToTable("Roles"));
+            modelBuilder.Entity<IdentityUserRole<Guid>>(e => e.ToTable("UserRoles"));
+            //modelBuilder.Ignore<IdentityRoleClaim<Guid>>();
+            //modelBuilder.Ignore<IdentityUserClaim<Guid>>();
+            //modelBuilder.Ignore<IdentityUserLogin<Guid>>();
+            //modelBuilder.Ignore<IdentityUserToken<Guid>>();
+               
+            modelBuilder.Entity<IdentityRole<Guid>>()
+                .HasKey(r => r.Id);  // Ensure the role's Id is set to Guid
 
-            //modelBuilder.Entity<Hotel>()
-            //    .Navigation(h => h.Manager)
-            //    .AutoInclude();  // Auto-include Reservations
+
+
+            modelBuilder.Entity<CustomerReservation>()
+                .Navigation(h => h.Reservation)
+                .AutoInclude();
+
+            modelBuilder.Entity<CustomerReservation>()
+                .Navigation(h => h.Customer)
+                .AutoInclude();  // Auto-include Reservations
         }
 
         public DbSet<Entities.Customer> Customers { get; set; }
@@ -35,7 +52,7 @@ namespace HotelModels.Data
         public DbSet<Entities.Reservation> Reservations { get; set; }
         public DbSet<Entities.Hotel> Hotels { get; set; }
         public DbSet<Entities.Room> Rooms { get; set; }
-        
+        //public DbSet<IdentityRole<Guid>> UserRoles { get; set; }
 
     }
 }

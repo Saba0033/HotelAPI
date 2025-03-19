@@ -17,21 +17,27 @@ namespace HotelRepository.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.2")
+                .HasAnnotation("ProductVersion", "9.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("HotelModels.Entities.Customer", b =>
                 {
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -48,64 +54,173 @@ namespace HotelRepository.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasMaxLength(20)
                         .IsUnicode(false)
                         .HasColumnType("varchar(20)");
 
-                    b.HasKey("CustomerId");
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("IdentityNumber")
                         .IsUnique();
 
-                    b.ToTable("Customers");
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("Users/Customers", (string)null);
 
                     b.HasData(
                         new
                         {
-                            CustomerId = new Guid("45678901-4567-4567-4567-456789012345"),
+                            Id = new Guid("45678901-4567-4567-4567-456789012345"),
+                            AccessFailedCount = 0,
                             Email = "sekhv23@freeuni.edu.ge",
+                            EmailConfirmed = false,
                             FirstName = "Saba",
                             IdentityNumber = "12345678901",
                             LastName = "Ekhvaia",
-                            PhoneNumber = "123456789"
+                            NormalizedEmail = "SEKHV23@FREEUNI.EDU.GE",
+                            NormalizedUserName = "SEKHV23@FREEUNI.EDU.GE",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAokGrrQCm+yNDfDtEeEIOegQfY7cEwliXwSPfFC7Y69Dqsp6+NzB0atWsT6FzECjA==",
+                            PhoneNumber = "123456789",
+                            SecurityStamp = "0761ec82-5289-4876-a604-8dc2e8b0f7ac",
+                            UserName = "sekhv23@freeuni.edu.ge"
                         },
                         new
                         {
-                            CustomerId = new Guid("56789012-5678-5678-5678-567890123456"),
+                            Id = new Guid("56789012-5678-5678-5678-567890123456"),
+                            AccessFailedCount = 0,
                             Email = "Nika123@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Nika",
                             IdentityNumber = "12345678902",
                             LastName = "Kavtaradze",
-                            PhoneNumber = "123456789"
+                            NormalizedEmail = "NIKA123@GMAIL.COM",
+                            NormalizedUserName = "NIKA123@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJYPY+2RUojPDDAziY/Bq64cY9w9p9hKxcyotW1C722g1XvcJXT0lpZcTFE+A2MAlA==",
+                            PhoneNumber = "123456789",
+                            SecurityStamp = "0fb136f7-4e19-4eab-8e5f-caac691d8371",
+                            UserName = "Nika123@gmail.com"
                         },
                         new
                         {
-                            CustomerId = new Guid("67890123-6789-6789-6789-678901234567"),
+                            Id = new Guid("67890123-6789-6789-6789-678901234567"),
+                            AccessFailedCount = 0,
                             Email = "Gio@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Giorgi",
                             IdentityNumber = "12345678903",
                             LastName = "Kavtaradze",
-                            PhoneNumber = "123456789"
+                            NormalizedEmail = "GIO@GMAIL.COM",
+                            NormalizedUserName = "GIO@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKxbW05tcYah/sFD1xhTS5fcqnmmOQGRVX9Qb2hC2psph3ePdJgJGwEpUH2LO+phdQ==",
+                            PhoneNumber = "123456789",
+                            SecurityStamp = "1c0c63f1-e48b-434b-98ca-79192fa66f43",
+                            UserName = "Gio@gmail.com"
                         },
                         new
                         {
-                            CustomerId = new Guid("78901234-7890-7890-7890-789012345678"),
+                            Id = new Guid("78901234-7890-7890-7890-789012345678"),
+                            AccessFailedCount = 0,
                             Email = "Nino@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Nino",
                             IdentityNumber = "12345678904",
                             LastName = "Kavtaradze",
-                            PhoneNumber = "123456789"
+                            NormalizedEmail = "NINO@GMAIL.COM",
+                            NormalizedUserName = "NINO@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJSEIluTaSl3w22vuKITXquGMlOqAkHv2Bb4vy+DGDgx/yrzykDiNDl/AHKUft6MJA==",
+                            PhoneNumber = "123456789",
+                            SecurityStamp = "d1623fc9-afed-4dd3-ba55-442c91d95a51",
+                            UserName = "Nino@gmail.com"
                         },
                         new
                         {
-                            CustomerId = new Guid("89012345-8901-8901-8901-890123456789"),
+                            Id = new Guid("89012345-8901-8901-8901-890123456789"),
+                            AccessFailedCount = 0,
                             Email = "Ana@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Ana",
                             IdentityNumber = "12345678905",
                             LastName = "Kavtaradze",
-                            PhoneNumber = "123456789"
+                            NormalizedEmail = "ANA@GMAIL.COM",
+                            NormalizedUserName = "ANA@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM1+q1ep0NrZA0LS91VftcrHoGDA/faFFj2lSlfZXaozLmxvPAGmin9zQ08jJLXtCQ==",
+                            PhoneNumber = "123456789",
+                            SecurityStamp = "1343dc65-2f3f-4f39-8b60-33257afff2ab",
+                            UserName = "Ana@gmail.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("44444444-4444-4444-4444-444444444444"),
+                            AccessFailedCount = 0,
+                            Email = "GoldenPalaceManager@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "John",
+                            IdentityNumber = "12345678999",
+                            LastName = "Doe",
+                            NormalizedEmail = "GOLDENPALACEMANAGER@GMAIL.COM",
+                            NormalizedUserName = "GOLDENPALACEMANAGER@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAECW21d2Eu3c3+vELOftF0i/6r64KbdeNzyAH2U4o9o6dL1D3GF1LwgCaJ9w0iJ2ntQ==",
+                            PhoneNumber = "123456789",
+                            SecurityStamp = "b35d61c3-d21b-4d7c-8977-49860bee5f06",
+                            UserName = "GoldenPalaceManager@gmail.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("55555555-5555-5555-5555-555555555555"),
+                            AccessFailedCount = 0,
+                            Email = "AuraManager@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Jane",
+                            IdentityNumber = "92345678999",
+                            LastName = "Chan",
+                            NormalizedEmail = "AURAMANAGER@GMAIL.COM",
+                            NormalizedUserName = "AURAMANAGER@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBBz95Azu7NPXFqZnJSZL0HaOnhwuIrnbWEHuIRA99ZEQ7y23prmwpmCzhvfj+X2RQ==",
+                            PhoneNumber = "123456789",
+                            SecurityStamp = "18c135ac-53c2-4a45-b80b-443b1858a18e",
+                            UserName = "AuraManager@gmail.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("66666666-6666-6666-6666-666666666666"),
+                            AccessFailedCount = 0,
+                            Email = "MogzauriManager@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Jack",
+                            IdentityNumber = "99945678903",
+                            LastName = "Bond",
+                            NormalizedEmail = "MOGZAURIMANAGER@GMAIL.COM",
+                            NormalizedUserName = "MOGZAURIMANAGER@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG7BtAM9dt31F4GKwLY94jXbUT/RqKN0WorGIWyQTTf3Q+m7PVS2hxANzXQvF080cQ==",
+                            PhoneNumber = "123456789",
+                            SecurityStamp = "da94aa37-b607-4fd2-83b7-9ec4d579bd09",
+                            UserName = "MogzauriManager@gmail.com"
                         });
                 });
 
@@ -115,10 +230,10 @@ namespace HotelRepository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid?>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ReservationId")
+                    b.Property<Guid?>("ReservationId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -263,7 +378,7 @@ namespace HotelRepository.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid>("HotelId")
+                    b.Property<Guid?>("HotelId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("IdentityNumber")
@@ -285,7 +400,8 @@ namespace HotelRepository.Migrations
                     b.HasKey("ManagerId");
 
                     b.HasIndex("HotelId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[HotelId] IS NOT NULL");
 
                     b.HasIndex("IdentityNumber")
                         .IsUnique();
@@ -299,7 +415,7 @@ namespace HotelRepository.Migrations
                             Email = "GoldenPalaceManager@gmail.com",
                             FirsName = "John",
                             HotelId = new Guid("11111111-1111-1111-1111-111111111111"),
-                            IdentityNumber = "12345678901",
+                            IdentityNumber = "12345678999",
                             LastName = "Doe",
                             PhoneNumber = "123456789"
                         },
@@ -309,7 +425,7 @@ namespace HotelRepository.Migrations
                             Email = "AuraManager@gmail.com",
                             FirsName = "Jane",
                             HotelId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            IdentityNumber = "12345678902",
+                            IdentityNumber = "92345678999",
                             LastName = "Chan",
                             PhoneNumber = "123456789"
                         },
@@ -319,7 +435,7 @@ namespace HotelRepository.Migrations
                             Email = "MogzauriManager@gmail.com",
                             FirsName = "Jack",
                             HotelId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            IdentityNumber = "12345678903",
+                            IdentityNumber = "99945678903",
                             LastName = "Bond",
                             PhoneNumber = "123456789"
                         });
@@ -337,7 +453,7 @@ namespace HotelRepository.Migrations
                     b.Property<DateTime>("CheckOut")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("RoomId")
+                    b.Property<Guid?>("RoomId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ReservationId");
@@ -411,7 +527,7 @@ namespace HotelRepository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("HotelId")
+                    b.Property<Guid?>("HotelId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -515,19 +631,210 @@ namespace HotelRepository.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("Roles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("56789012-6789-6789-6789-678901234567"),
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = new Guid("67890123-7890-7890-7890-789012345678"),
+                            Name = "Manager",
+                            NormalizedName = "MANAGER"
+                        },
+                        new
+                        {
+                            Id = new Guid("78901234-8901-8901-8901-890123456789"),
+                            Name = "Customer",
+                            NormalizedName = "CUSTOMER"
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("UserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = new Guid("44444444-4444-4444-4444-444444444444"),
+                            RoleId = new Guid("67890123-7890-7890-7890-789012345678")
+                        },
+                        new
+                        {
+                            UserId = new Guid("55555555-5555-5555-5555-555555555555"),
+                            RoleId = new Guid("56789012-6789-6789-6789-678901234567")
+                        },
+                        new
+                        {
+                            UserId = new Guid("66666666-6666-6666-6666-666666666666"),
+                            RoleId = new Guid("67890123-7890-7890-7890-789012345678")
+                        },
+                        new
+                        {
+                            UserId = new Guid("45678901-4567-4567-4567-456789012345"),
+                            RoleId = new Guid("78901234-8901-8901-8901-890123456789")
+                        },
+                        new
+                        {
+                            UserId = new Guid("56789012-5678-5678-5678-567890123456"),
+                            RoleId = new Guid("78901234-8901-8901-8901-890123456789")
+                        },
+                        new
+                        {
+                            UserId = new Guid("67890123-6789-6789-6789-678901234567"),
+                            RoleId = new Guid("78901234-8901-8901-8901-890123456789")
+                        },
+                        new
+                        {
+                            UserId = new Guid("78901234-7890-7890-7890-789012345678"),
+                            RoleId = new Guid("78901234-8901-8901-8901-890123456789")
+                        },
+                        new
+                        {
+                            UserId = new Guid("89012345-8901-8901-8901-890123456789"),
+                            RoleId = new Guid("78901234-8901-8901-8901-890123456789")
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
             modelBuilder.Entity("HotelModels.Entities.CustomerReservation", b =>
                 {
                     b.HasOne("HotelModels.Entities.Customer", "Customer")
-                        .WithMany("Reservations")
+                        .WithMany("CustomerReservations")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("HotelModels.Entities.Reservation", "Reservation")
                         .WithMany("Customers")
                         .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Customer");
 
@@ -539,8 +846,7 @@ namespace HotelRepository.Migrations
                     b.HasOne("HotelModels.Entities.Hotel", "Hotel")
                         .WithOne("Manager")
                         .HasForeignKey("HotelModels.Entities.Manager", "HotelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Hotel");
                 });
@@ -549,9 +855,7 @@ namespace HotelRepository.Migrations
                 {
                     b.HasOne("HotelModels.Entities.Room", "Room")
                         .WithMany("Reservations")
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoomId");
 
                     b.Navigation("Room");
                 });
@@ -561,15 +865,65 @@ namespace HotelRepository.Migrations
                     b.HasOne("HotelModels.Entities.Hotel", "Hotel")
                         .WithMany("Rooms")
                         .HasForeignKey("HotelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Hotel");
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.HasOne("HotelModels.Entities.Customer", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.HasOne("HotelModels.Entities.Customer", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HotelModels.Entities.Customer", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.HasOne("HotelModels.Entities.Customer", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("HotelModels.Entities.Customer", b =>
                 {
-                    b.Navigation("Reservations");
+                    b.Navigation("CustomerReservations");
                 });
 
             modelBuilder.Entity("HotelModels.Entities.Hotel", b =>

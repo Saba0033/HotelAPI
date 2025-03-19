@@ -11,7 +11,7 @@
         "projectName": "HotelAPI",
         "projectPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelAPI\\HotelAPI.csproj",
         "packagesPath": "C:\\Users\\Saba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelAPI\\obj\\",
+        "outputPath": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -72,6 +72,10 @@
               "target": "Package",
               "version": "[1.0.1, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.2, )"
@@ -123,7 +127,7 @@
         "projectName": "HotelAPI.Domain",
         "projectPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelModels\\HotelAPI.Domain.csproj",
         "packagesPath": "C:\\Users\\Saba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelModels\\obj\\",
+        "outputPath": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -161,6 +165,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -188,7 +198,7 @@
         "projectName": "HotelAPI.Infrastructure",
         "projectPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelRepository\\HotelAPI.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Saba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelRepository\\obj\\",
+        "outputPath": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -231,10 +241,6 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[9.0.2, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[9.0.2, )"
@@ -273,7 +279,7 @@
         "projectName": "HotelAPI.Application",
         "projectPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\Services\\HotelAPI.Application.csproj",
         "packagesPath": "C:\\Users\\Saba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\Services\\obj\\",
+        "outputPath": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -331,6 +337,10 @@
             "Mapster.EFCore": {
               "target": "Package",
               "version": "[5.1.1, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.3.1, )"
             }
           },
           "imports": [

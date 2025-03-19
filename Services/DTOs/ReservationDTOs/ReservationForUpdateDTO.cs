@@ -11,6 +11,6 @@ namespace HotelAPI.Application.DTOs.ReservationDTOs
     {
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
-        public List<CustomerReservation> Customers { get; set; }
+        public List<CustomerReservation>? Customers { get; set; }
     }
 }

@@ -1,5 +1,149 @@
 [
   {
+    "ContainingType": "HotelAPI.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelAPI.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdentityNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelAPI.Controllers.AuthController",
+    "Method": "RegisterAdmin",
+    "RelativePath": "api/auth/registerAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdentityNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelAPI.Controllers.AuthController",
+    "Method": "RegisterManager",
+    "RelativePath": "api/auth/registerManager",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdentityNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HotelAPI.Controllers.HotelController",
     "Method": "GetAllAsync",
     "RelativePath": "api/hotels",
@@ -50,6 +194,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelAPI.Controllers.HotelController",
+    "Method": "GetCustomers",
+    "RelativePath": "api/hotels/{hotelId}/Customers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hotelId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[HotelModels.Entities.Customer, HotelAPI.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "HotelAPI.Controllers.HotelController",
@@ -118,6 +288,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "HotelAPI.Controllers.HotelController",
+    "Method": "ChangeManager",
+    "RelativePath": "api/hotels/addManager",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "manager",
+        "Type": "HotelAPI.Application.DTOs.ManagerDTOs.ManagerForCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "HotelAPI.Controllers.HotelController",
@@ -193,6 +379,26 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[HotelModels.Entities.Hotel, HotelAPI.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "HotelAPI.Controllers.HotelController",
+    "Method": "GetReservations",
+    "RelativePath": "api/hotels/Reservations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[HotelModels.Entities.Reservation, HotelAPI.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -330,7 +536,7 @@
   {
     "ContainingType": "HotelAPI.Controllers.RoomController",
     "Method": "GetFreeRoomsOfHotel",
-    "RelativePath": "api/hotels/rooms/FreeRooms/{id}/{checkIn}/{checkOut}",
+    "RelativePath": "api/hotels/rooms/HotelFreeRooms/{id}/{checkIn}/{checkOut}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -366,7 +572,7 @@
   {
     "ContainingType": "HotelAPI.Controllers.RoomController",
     "Method": "GetRoomsOfHotel",
-    "RelativePath": "api/hotels/rooms/HotelFreeRooms/{id}",
+    "RelativePath": "api/hotels/rooms/HotelRooms/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -388,5 +594,21 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "HotelAPI.Controllers.HotelController",
+    "Method": "ChangeManager",
+    "RelativePath": "api/hotels/updateManager",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "manager",
+        "Type": "HotelAPI.Application.DTOs.ManagerDTOs.ManagerForUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

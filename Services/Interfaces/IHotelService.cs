@@ -12,11 +12,11 @@ namespace HotelServices.Interfaces
 {
     public interface IHotelService : IGenericService<Hotel, HotelForGetDTO, HotelForCreateDTO, HotelForUpdateDTO>
     {
-        Task<List<RoomForGetDTO>> GetFreeRoomsAsync(string id);
         Task<List<HotelForGetDTO>> GetHotelsByCityAsync(string city);
         Task<List<HotelForGetDTO>> GetHotelsByCountryAsync(string country);
         Task<List<HotelForGetDTO>> FilterByRatingAsync(int MinRating, int MaxRating);
         Task<List<HotelForGetDTO>> GetAllAsyncIncludes(Expression<Func<Hotel, bool>> Predicate = null);
+
 
     }
 }

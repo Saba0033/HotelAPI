@@ -1,7 +1,12 @@
 using FluentValidation;
+using HotelAPI.Application.DTOs.CustomerDTOs;
 using HotelAPI.Application.DTOs.HotelDTOs;
 using HotelAPI.Application.DTOs.Mapping;
+using HotelAPI.Application.DTOs.ReservationDTOs;
 using HotelAPI.Application.DTOs.RoomDTOs;
+using HotelAPI.Application.Interfaces;
+using HotelAPI.Application.Services;
+using HotelAPI.Extensions;
 using HotelModels.Data;
 using HotelModels.Entities;
 using HotelRepository.Implementations;
@@ -9,8 +14,9 @@ using HotelRepository.Interfaces;
 using HotelServices.Interfaces;
 using HotelServices.Services;
 using HotelServices.Validation;
-
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace HotelAPI
 {
@@ -20,31 +26,28 @@ namespace HotelAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            builder.Services.AddScoped<IGenericService<Hotel, HotelForGetDTO, HotelForCreateDTO, HotelForUpdateDTO>, GenericService<Hotel, HotelForGetDTO, HotelForCreateDTO, HotelForUpdateDTO>>();
-            builder.Services.AddScoped<IGenericService<Room, RoomForGetDTO, RoomForCreateDTO, RoomForUpdateDTO>, GenericService<Room, RoomForGetDTO, RoomForCreateDTO, RoomForUpdateDTO>>();
-
-            builder.Services.AddScoped(typeof(IHotelService), typeof(HotelService));
-            builder.Services.AddScoped(typeof(IRoomService), typeof(RoomService));
-            builder.Services.AddValidatorsFromAssembly(typeof(HotelValidator).Assembly);
-            
+            builder.Services.AddDatabaseServices(builder.Configuration);
+            builder.Services.AddIdentityServices();
+            builder.Services.AddApplicationServices();
+            builder.Services.AddJwtOptions(builder.Configuration);
             MapsterConfig.Configure();
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
-            builder.Services.AddDbContext<HotelContext>(options =>
-                options.UseSqlServer(
-                    "Server=DESKTOP-FLRC66Q\\SQLEXPRESS;DataBase=Hotel;Trusted_Connection=true;TrustServerCertificate=true"));
+            builder.AddAuthentication();
+            //builder.Services.AddAuthentication();
+            //builder.Services.AddAuthorization();
             var app = builder.Build();
 
 
             app.UseHttpsRedirection();
 
+            app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();
         }
+
     }
 }

@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Azure.Identity;
+using Microsoft.EntityFrameworkCore;
 using HotelModels.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace HotelRepository.Data
 {
@@ -20,17 +22,23 @@ namespace HotelRepository.Data
             SeedHotels(modelBuilder);
             SeedRooms(modelBuilder);
             SeedManagers(modelBuilder);
-            SeedCustomers(modelBuilder);
+            SeedUsers(modelBuilder);
             SeedReservations(modelBuilder);
             SeedCutomerReservations(modelBuilder);
+            SeedRoles(modelBuilder);
+            SeedUserRoles(modelBuilder);
         }
 
         private static void ConfigureCustomers(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>(entity =>
             {
-                
-                entity.HasKey(c => c.CustomerId);
+                entity.Ignore(c => c.ConcurrencyStamp);
+                entity.Ignore(c => c.PhoneNumberConfirmed);
+                entity.Ignore(c => c.TwoFactorEnabled);
+                entity.Ignore(c => c.LockoutEnd);
+                entity.Ignore(c => c.LockoutEnabled);
+                entity.HasKey(c => c.Id);
 
                 entity.Property(c => c.FirstName)
                     .IsRequired()
@@ -56,7 +64,7 @@ namespace HotelRepository.Data
                 entity.Property(c => c.PhoneNumber)
                     .HasMaxLength(20).IsUnicode(false);
 
-                entity.HasMany(c => c.Reservations);
+                entity.HasMany(c => c.CustomerReservations);
             });
         }
 
@@ -67,7 +75,7 @@ namespace HotelRepository.Data
                 entity.HasKey(cr => cr.Id);
 
                 entity.HasOne(cr => cr.Customer)
-                    .WithMany(c => c.Reservations)
+                    .WithMany(c => c.CustomerReservations)
                     .HasForeignKey(cr => cr.CustomerId)
                     .OnDelete(DeleteBehavior.Cascade);
 
@@ -331,7 +339,7 @@ namespace HotelRepository.Data
                     ManagerId = ManagerGuid1,
                     FirsName = "John",
                     LastName = "Doe",
-                    IdentityNumber = "12345678901",
+                    IdentityNumber = "12345678999",
                     Email = "GoldenPalaceManager@gmail.com",
                     PhoneNumber = "123456789",
                     HotelId = HotelGuid1
@@ -341,7 +349,7 @@ namespace HotelRepository.Data
                     ManagerId = ManagerGuid2,
                     FirsName = "Jane",
                     LastName = "Chan",
-                    IdentityNumber = "12345678902",
+                    IdentityNumber = "92345678999",
                     Email = "AuraManager@gmail.com",
                     PhoneNumber = "123456789",
                     HotelId = HotelGuid2
@@ -351,7 +359,7 @@ namespace HotelRepository.Data
                     ManagerId = ManagerGuid3,
                     FirsName = "Jack",
                     LastName = "Bond",
-                    IdentityNumber = "12345678903",
+                    IdentityNumber = "99945678903",
                     Email = "MogzauriManager@gmail.com",
                     PhoneNumber = "123456789",
                     HotelId = HotelGuid3
@@ -359,57 +367,134 @@ namespace HotelRepository.Data
                 );
         }
 
-        private static void SeedCustomers(ModelBuilder modelBuilder)
+        private static void SeedUsers(ModelBuilder modelBuilder)
         {
+            PasswordHasher<Customer> passwordHasher = new PasswordHasher<Customer>();
+
             modelBuilder.Entity<Customer>().HasData(
                 new Customer
                 {
-                    CustomerId = CustomerGuid1,
+                    Id = CustomerGuid1,
                     FirstName = "Saba",
                     LastName = "Ekhvaia",
+                    UserName = "sekhv23@freeuni.edu.ge",
                     IdentityNumber = "12345678901",
                     Email = "sekhv23@freeuni.edu.ge",
-                    PhoneNumber = "123456789"
+                    PhoneNumber = "123456789",
+                    NormalizedEmail = "SEKHV23@FREEUNI.EDU.GE",
+                    NormalizedUserName = "SEKHV23@FREEUNI.EDU.GE",
+                    PasswordHash = passwordHasher.HashPassword(null, "123"),
+                    SecurityStamp = Guid.NewGuid().ToString(), // Add SecurityStamp
+                    ConcurrencyStamp = Guid.NewGuid().ToString(), // Add ConcurrencyStamp
                 },
                 new Customer
                 {
-                    CustomerId = CustomerGuid2,
+                    Id = CustomerGuid2,
                     FirstName = "Nika",
                     LastName = "Kavtaradze",
                     IdentityNumber = "12345678902",
                     Email = "Nika123@gmail.com",
-                    PhoneNumber = "123456789"
+                    UserName = "Nika123@gmail.com",
+                    NormalizedEmail = "NIKA123@GMAIL.COM",
+                    NormalizedUserName = "NIKA123@GMAIL.COM",
+                    PhoneNumber = "123456789",
+                    PasswordHash = passwordHasher.HashPassword(null, "123"),
+                    SecurityStamp = Guid.NewGuid().ToString(), // Add SecurityStamp
+                    ConcurrencyStamp = Guid.NewGuid().ToString(), // Add ConcurrencyStamp
                 },
                 new Customer
                 {
-                    CustomerId = CustomerGuid3,
+                    Id = CustomerGuid3,
                     FirstName = "Giorgi",
                     LastName = "Kavtaradze",
                     IdentityNumber = "12345678903",
                     Email = "Gio@gmail.com",
-                    PhoneNumber = "123456789"
+                    UserName = "Gio@gmail.com",
+                    NormalizedEmail = "GIO@GMAIL.COM",
+                    NormalizedUserName = "GIO@GMAIL.COM",
+                    PhoneNumber = "123456789",
+                    PasswordHash = passwordHasher.HashPassword(null, "123"),
+                    SecurityStamp = Guid.NewGuid().ToString(), // Add SecurityStamp
+                    ConcurrencyStamp = Guid.NewGuid().ToString(), // Add ConcurrencyStamp
                 },
                 new Customer
                 {
-                    CustomerId = CustomerGuid4,
+                    Id = CustomerGuid4,
                     FirstName = "Nino",
                     LastName = "Kavtaradze",
                     IdentityNumber = "12345678904",
                     Email = "Nino@gmail.com",
-                    PhoneNumber = "123456789"
-
+                    UserName = "Nino@gmail.com",
+                    NormalizedEmail = "NINO@GMAIL.COM",
+                    NormalizedUserName = "NINO@GMAIL.COM",
+                    PhoneNumber = "123456789",
+                    PasswordHash = passwordHasher.HashPassword(null, "123"),
+                    SecurityStamp = Guid.NewGuid().ToString(), // Add SecurityStamp
+                    ConcurrencyStamp = Guid.NewGuid().ToString(), // Add ConcurrencyStamp
                 },
                 new Customer
                 {
-                    CustomerId = CustomerGuid5,
+                    Id = CustomerGuid5,
                     FirstName = "Ana",
                     LastName = "Kavtaradze",
                     IdentityNumber = "12345678905",
                     Email = "Ana@gmail.com",
-                    PhoneNumber = "123456789"
+                    UserName = "Ana@gmail.com",
+                    NormalizedEmail = "ANA@GMAIL.COM",
+                    NormalizedUserName = "ANA@GMAIL.COM",
+                    PhoneNumber = "123456789",
+                    PasswordHash = passwordHasher.HashPassword(null, "123"),
+                    SecurityStamp = Guid.NewGuid().ToString(), // Add SecurityStamp
+                    ConcurrencyStamp = Guid.NewGuid().ToString(), // Add ConcurrencyStamp
+                },
+                new Customer
+                {
+                    Id = ManagerGuid1,
+                    FirstName = "John",
+                    LastName = "Doe",
+                    IdentityNumber = "12345678999",
+                    Email = "GoldenPalaceManager@gmail.com",
+                    UserName = "GoldenPalaceManager@gmail.com",
+                    NormalizedEmail = "GOLDENPALACEMANAGER@GMAIL.COM",
+                    NormalizedUserName = "GOLDENPALACEMANAGER@GMAIL.COM",
+                    PhoneNumber = "123456789",
+                    PasswordHash = passwordHasher.HashPassword(null, "123"),
+                    SecurityStamp = Guid.NewGuid().ToString(), // Add SecurityStamp
+                    ConcurrencyStamp = Guid.NewGuid().ToString(), // Add ConcurrencyStamp
+                },
+                new Customer
+                {
+                    Id = ManagerGuid2,
+                    FirstName = "Jane",
+                    LastName = "Chan",
+                    IdentityNumber = "92345678999",
+                    Email = "AuraManager@gmail.com",
+                    UserName = "AuraManager@gmail.com",
+                    NormalizedEmail = "AURAMANAGER@GMAIL.COM",
+                    NormalizedUserName = "AURAMANAGER@GMAIL.COM",
+                    PhoneNumber = "123456789",
+                    PasswordHash = passwordHasher.HashPassword(null, "123"),
+                    SecurityStamp = Guid.NewGuid().ToString(), // Add SecurityStamp
+                    ConcurrencyStamp = Guid.NewGuid().ToString(), // Add ConcurrencyStamp
+                },
+                new Customer
+                {
+                    Id = ManagerGuid3,
+                    FirstName = "Jack",
+                    LastName = "Bond",
+                    IdentityNumber = "99945678903",
+                    Email = "MogzauriManager@gmail.com",
+                    UserName = "MogzauriManager@gmail.com",
+                    NormalizedEmail = "MOGZAURIMANAGER@GMAIL.COM",
+                    NormalizedUserName = "MOGZAURIMANAGER@GMAIL.COM",
+                    PhoneNumber = "123456789",
+                    PasswordHash = passwordHasher.HashPassword(null, "123"),
+                    SecurityStamp = Guid.NewGuid().ToString(), // Add SecurityStamp
+                    ConcurrencyStamp = Guid.NewGuid().ToString(), // Add ConcurrencyStamp
                 }
-                );
+            );
         }
+
 
         private static void SeedReservations(ModelBuilder modelBuilder)
         {
@@ -527,6 +612,76 @@ namespace HotelRepository.Data
             );
         }
 
+        private static void SeedRoles(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<IdentityRole<Guid> >(options =>
+                options.HasData(new IdentityRole<Guid>
+                {
+                    Id = IdentityRoleGuid1,
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
+                },
+                    new IdentityRole<Guid>
+                    {
+                        Id = IdentityRoleGuid2,
+                        Name = "Manager",
+                        NormalizedName = "MANAGER"
+                    },
+                    new IdentityRole<Guid>
+                    {
+                        Id = IdentityRoleGuid3,
+                        Name = "Customer",
+                        NormalizedName = "CUSTOMER"
+                    }
+                )); 
+        }
+
+        private static void SeedUserRoles(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(
+                new IdentityUserRole<Guid>
+                {
+                    RoleId = IdentityRoleGuid2,
+                    UserId = ManagerGuid1
+                },
+                new IdentityUserRole<Guid>
+                {
+                    RoleId = IdentityRoleGuid1,
+                    UserId = ManagerGuid2
+                },
+                new IdentityUserRole<Guid>
+                {
+                    RoleId = IdentityRoleGuid2,
+                    UserId = ManagerGuid3
+                },
+                new IdentityUserRole<Guid>
+                {
+                    RoleId = IdentityRoleGuid3,
+                    UserId = CustomerGuid1
+                },
+                new IdentityUserRole<Guid>
+                {
+                    RoleId = IdentityRoleGuid3,
+                    UserId = CustomerGuid2
+                },
+                new IdentityUserRole<Guid>
+                {
+                    RoleId = IdentityRoleGuid3,
+                    UserId = CustomerGuid3
+                },
+                new IdentityUserRole<Guid>
+                {
+                    RoleId = IdentityRoleGuid3,
+                    UserId = CustomerGuid4
+                },
+                new IdentityUserRole<Guid>
+                {
+                    RoleId = IdentityRoleGuid3,
+                    UserId = CustomerGuid5
+                }
+            );
+        }
+
 
         private static readonly Guid HotelGuid1 = new Guid("11111111-1111-1111-1111-111111111111");
         private static readonly Guid HotelGuid2 = new Guid("22222222-2222-2222-2222-222222222222");
@@ -567,6 +722,8 @@ namespace HotelRepository.Data
         private static readonly Guid CustomerReservationGuid6 = new Guid("23456789-3456-3456-3456-345678901234");
         private static readonly Guid CustomerReservationGuid7 = new Guid("34567890-4567-4567-4567-456789012345");
         private static readonly Guid CustomerReservationGuid8 = new Guid("45678901-5678-5678-5678-567890123456");
-
+        private static readonly Guid IdentityRoleGuid1 = new Guid("56789012-6789-6789-6789-678901234567");
+        private static readonly Guid IdentityRoleGuid2 = new Guid("67890123-7890-7890-7890-789012345678");
+        private static readonly Guid IdentityRoleGuid3 = new Guid("78901234-8901-8901-8901-890123456789");
     }
 }

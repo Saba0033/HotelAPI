@@ -10,8 +10,8 @@ namespace HotelModels.Entities
         public Guid RoomId { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public Guid HotelId { get; set; }
-        public Hotel Hotel { get; set; }
-        public List<Reservation> Reservations { get; set; }
+        public Guid? HotelId { get; set; }
+        public Hotel? Hotel { get; set; }
+        public List<Reservation>? Reservations { get; set; }
     }
 }

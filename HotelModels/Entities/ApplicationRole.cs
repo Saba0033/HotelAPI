@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
-namespace HotelServices.Validation
+namespace HotelAPI.Domain.Entities
 {
-    class ManagerValidation
+    public class ApplicationRole : IdentityRole<Guid>
     {
+    
     }
 }

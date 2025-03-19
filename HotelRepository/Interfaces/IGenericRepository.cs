@@ -6,10 +6,10 @@ namespace HotelRepository.Interfaces
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task<T> GetAsync(Guid Id, params Expression<Func<T, object>>[] IncludeProperties);
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
-        Task DeleteAsync(Guid Id);
+        Task<T> GetAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] IncludeProperties);
+        Task DeleteAsync(Expression<Func<T, bool>> predicate);
         Task<List<T>> GetAllAsync(Expression<Func<T, bool>> Predicate = null, params Expression<Func<T, object>>[] IncludeProperties);
 
     }

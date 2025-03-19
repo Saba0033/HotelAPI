@@ -24,10 +24,19 @@ namespace HotelRepository.Implementations
             return result;
         }
 
-        public async Task<T> GetAsync(Guid Id, params Expression<Func<T, object>>[] IncludeProperties)
+
+        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate,
+            params Expression<Func<T, object>>[] IncludeProperties)
         {
-            
-            return await _context.Set<T>().FindAsync(Id);
+
+            IQueryable<T> query = _context.Set<T>();
+
+            foreach (var includeProperty in IncludeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return await query.FirstOrDefaultAsync(predicate);
         }
 
         public async Task AddAsync(T entity)
@@ -42,9 +51,9 @@ namespace HotelRepository.Implementations
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Guid Id)
+        public async Task DeleteAsync(Expression<Func<T, bool>> predicate)
         {
-            var toDelete = await GetAsync(Id);
+            var toDelete = await GetAsync(predicate);
             _context.Set<T>().Remove(toDelete);
             await _context.SaveChangesAsync();
         }

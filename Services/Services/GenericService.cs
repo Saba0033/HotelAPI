@@ -38,14 +38,12 @@ namespace HotelServices.Services
             await _repository.AddAsync(mapped);
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            if (!Guid.TryParse(id, out var validId)) throw new ArgumentException("Invalid GUID format.");
-
-            await _repository.DeleteAsync(validId);
+            await _repository.DeleteAsync(predicate);
         }
 
-        public async Task<List<TEntityGetDTO>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, 
+        public async Task<List<TEntityGetDTO>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null,
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
             var result = await _repository.GetAllAsync(predicate, includeProperties);
@@ -53,13 +51,14 @@ namespace HotelServices.Services
             return mappedResult;
         }
 
-        public async Task<TEntityGetDTO> GetAsync(string id)
+     
+        public async Task<TEntityGetDTO> GetAsync(Expression<Func<TEntity,bool >> predicate, params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            if (!Guid.TryParse(id, out var validId)) throw new ArgumentException("Invalid GUID format.");
-            var result  = await _repository.GetAsync(validId);
+            var result = await _repository.GetAsync(predicate, includeProperties);
             var mappedResult = result.Adapt<TEntityGetDTO>();
             return mappedResult;
         }
+
 
         public async Task UpdateAsync(TEntityUpdateDTO entity)
         {

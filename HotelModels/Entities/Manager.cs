@@ -17,8 +17,7 @@ namespace HotelModels.Entities
         [EmailAddress]
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public Guid HotelId { get; set; }
-        [JsonIgnore]
-        public Hotel Hotel { get; set; }
+        public Guid? HotelId { get; set; }
+        public Hotel? Hotel { get; set; }
     }
 }

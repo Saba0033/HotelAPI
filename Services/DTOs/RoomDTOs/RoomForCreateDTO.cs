@@ -10,7 +10,7 @@ namespace HotelAPI.Application.DTOs.RoomDTOs
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public Guid HotelId { get; set; } 
+        public Guid? HotelId { get; set; } 
     }
 
 }

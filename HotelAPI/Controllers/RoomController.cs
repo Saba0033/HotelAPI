@@ -1,8 +1,11 @@
 ﻿using System.Security.Cryptography.Xml;
+using HotelAPI.Application.DTOs.ManagerDTOs;
 using HotelAPI.Application.DTOs.RoomDTOs;
 using HotelModels.Entities;
 using HotelServices.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace HotelAPI.Controllers
 {
@@ -10,20 +13,18 @@ namespace HotelAPI.Controllers
     [ApiController]
     public class RoomController(IRoomService service) : ControllerBase
     {
-        private IRoomService service = service;
-
 
         [HttpGet]
         public async Task<ActionResult<List<Room>>> GetAllAsync()
         {
-            var result = await service.GetAllAsync();
+            var result = await service.GetAllAsync(null, r=> r.Reservations);
             return Ok(result);
         }
 
         [HttpGet("{Id}")]
         public async Task<ActionResult<Room>> GetAsync(string Id)
         {
-            var result = await service.GetAsync(Id);
+            var result = await service.GetAsync(x=>x.RoomId.ToString() == Id);
             return Ok(result);
         }
 
@@ -35,6 +36,7 @@ namespace HotelAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateAsync([FromBody] RoomForUpdateDTO entity)
         {
             await service.UpdateAsync(entity);
@@ -44,7 +46,7 @@ namespace HotelAPI.Controllers
         [HttpDelete(template: "{Id}")]
         public async Task<ActionResult> DeleteAsync(string Id)
         {
-            await service.DeleteAsync(Id);
+            await service.DeleteAsync(x=> x.RoomId.ToString() == Id);
             return Ok();
         }
 
@@ -61,13 +63,15 @@ namespace HotelAPI.Controllers
             var result = await service.GetFreeRoomsOfHotel(id, checkIn, checkOut);
             return Ok(result);
         }
-
-
+        
         [HttpGet(template: "HotelRooms/{id}")]
         public async Task<ActionResult<List<Room>>> GetRoomsOfHotel(string id)
         {
             var result = await service.GetRoomsOfHotel(id);
             return Ok(result);
         }
+
+
+        
     }
 }

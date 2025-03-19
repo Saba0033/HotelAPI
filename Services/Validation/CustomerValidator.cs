@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation;
+using HotelModels.Entities;
 
 namespace HotelServices.Validation
 {
-    class CustomerValidation
+    public class CustomerValidator : AbstractValidator<Customer>
     {
     }
 }
