@@ -5,11 +5,15 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using HotelModels.Data;
 using HotelRepository.Interfaces;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelRepository.Implementations
 {
-    public class GenericRepository<T>(HotelContext _context) : IGenericRepository<T> where T : class
+    public class GenericRepository<T, TGetDto>(HotelContext _context) : IGenericRepository<T, TGetDto> 
+        where T : class
+        where TGetDto : class
+
     {
 
         public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> Predicate = null
@@ -26,12 +30,12 @@ namespace HotelRepository.Implementations
 
 
         public async Task<T> GetAsync(Expression<Func<T, bool>> predicate,
-            params Expression<Func<T, object>>[] IncludeProperties)
+            params Expression<Func<T, object>>[] includeProperties)
         {
 
             IQueryable<T> query = _context.Set<T>();
 
-            foreach (var includeProperty in IncludeProperties)
+            foreach (var includeProperty in includeProperties)
             {
                 query = query.Include(includeProperty);
             }
@@ -39,23 +43,40 @@ namespace HotelRepository.Implementations
             return await query.FirstOrDefaultAsync(predicate);
         }
 
+ 
+
         public async Task AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
-            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(T entity)
         {
             _context.Set<T>().Update(entity);
-            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(Expression<Func<T, bool>> predicate)
         {
             var toDelete = await GetAsync(predicate);
             _context.Set<T>().Remove(toDelete);
+        }
+
+        public async Task SaveChanges()
+        {
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<TGetDto>> GetAllAsyncProjection<TGetDto>(
+            Expression<Func<T, bool>> predicate = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            if (predicate != null)
+                query = query.Where(predicate);
+
+            var result = await query.ProjectToType<TGetDto>().ToListAsync();
+            return result;
+        }
+
     }
 }

@@ -15,8 +15,18 @@ namespace HotelServices.Services
     public class RoomService : GenericService<Room, RoomForGetDTO, RoomForCreateDTO, RoomForUpdateDTO>,IRoomService
 
     {
-        public RoomService(IGenericRepository<Room> repository, IValidator<Room> validator) : base(repository, validator)
+        public RoomService(IGenericRepository<Room, RoomForGetDTO> repository, IValidator<Room> validator) : base(repository, validator)
         {
+        }
+
+        public override async Task UpdateAsync(RoomForUpdateDTO entity)
+        {
+            var room = await GetAsyncWithoutDTO(x => x.RoomId == entity.RoomId);
+            if (room == null) throw new ArgumentException("Room not found");
+            if (entity.Name != null) room.Name = entity.Name;
+            if (entity.Price != null) room.Price = (decimal)entity.Price;
+            if (entity.HotelId != null) room.HotelId = entity.HotelId;
+            
         }
 
         public async Task<List<RoomForGetDTO>> GetAllFreeRoomsAsync(DateTime checkIn, DateTime checkOut)

@@ -21,38 +21,43 @@ namespace HotelAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Hotel>>> GetAllAsync()
         {
-            var result = await hotelService.GetAllAsyncIncludes();
+            //var result = await hotelService.GetAllAsyncIncludes();
+            var result = await hotelService.GetAllAsync(null, h=>h.Manager);
             return Ok(result);
         }
 
         [HttpGet("{Id}")]
         public async Task<ActionResult<Hotel>> GetAsync(string Id)
         {
-            var result = await hotelService.GetAsync(x=>x.HotelId.ToString() == Id, hotel => hotel.Rooms);
+            var result = await hotelService.GetAsync(x=>x.HotelId.ToString() == Id, hotel => hotel.Rooms, h=> h.Manager, hotel => hotel.Rooms.Select(x => x.Reservations));
             return Ok(result);
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> AddAsync([FromBody] HotelForCreateDTO entity)
         {
             await hotelService.AddAsync(entity);
+            await hotelService.SaveChanges();
             return (Ok());
         }
 
         [HttpPut]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateAsync([FromBody] HotelForUpdateDTO entity)
         {
             await hotelService.UpdateAsync(entity);
+            await hotelService.SaveChanges();
             return Ok();
         }
 
         [HttpDelete(template:"{Id}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteAsync(string Id)
         {
             await hotelService.DeleteAsync(x=>x.HotelId.ToString() == Id);
+            await hotelService.SaveChanges();
+
             return Ok();
         }
 
@@ -109,6 +114,7 @@ namespace HotelAPI.Controllers
         public async Task<ActionResult> ChangeManager([FromBody] ManagerForUpdateDTO manager)
         {
             await managerService.UpdateAsync(manager);
+            await managerService.SaveChanges();
             return Ok();
         }
 
@@ -117,6 +123,7 @@ namespace HotelAPI.Controllers
         public async Task<ActionResult> ChangeManager([FromBody] ManagerForCreateDTO manager)
         {
             await managerService.AddAsync(manager);
+            await managerService.SaveChanges();
             return Ok();
         }
 

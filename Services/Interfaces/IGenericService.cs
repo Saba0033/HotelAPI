@@ -22,5 +22,11 @@ namespace HotelServices.Interfaces
         Task AddAsync(TEntityCreateDTO entity);
         Task UpdateAsync(TEntityUpdateDTO entity);
         Task DeleteAsync(Expression<Func<TEntity,bool>> predicate);
+        Task SaveChanges();
+        Task<List<TEntityGetDTO>> GetAllAsyncProjection<TGetDto>(
+            Expression<Func<TEntity, bool>> predicate = null);
+
+        Task<TEntity> GetAsyncWithoutDTO(Expression<Func<TEntity, bool>> predicate,
+            params Expression<Func<TEntity, object>>[] includeProperties);
     }
 }

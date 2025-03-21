@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using FluentValidation;
+using HotelAPI.Application.Exceptions;
 using HotelRepository.Interfaces;
 using HotelServices.Interfaces;
 using Mapster;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+//using static FluentValidation.Validators.PredicateValidator<T, TProperty>;
 
 namespace HotelServices.Services
 {
@@ -16,11 +20,11 @@ namespace HotelServices.Services
         where TEntityCreateDTO : class
         where TEntityUpdateDTO : class
     {
-        private readonly IGenericRepository<TEntity> _repository;
+        private readonly IGenericRepository<TEntity, TEntityGetDTO> _repository;
         private readonly IValidator<TEntity> _validator;
 
 
-        public GenericService(IGenericRepository<TEntity> repository, IValidator<TEntity> validator)
+        public GenericService(IGenericRepository<TEntity, TEntityGetDTO> repository, IValidator<TEntity> validator)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _validator = validator ?? throw new ArgumentNullException(nameof(validator));
@@ -38,7 +42,7 @@ namespace HotelServices.Services
             await _repository.AddAsync(mapped);
         }
 
-        public async Task DeleteAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual async Task DeleteAsync(Expression<Func<TEntity, bool>> predicate)
         {
             await _repository.DeleteAsync(predicate);
         }
@@ -47,6 +51,7 @@ namespace HotelServices.Services
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
             var result = await _repository.GetAllAsync(predicate, includeProperties);
+            
             var mappedResult = result.Adapt<List<TEntityGetDTO>>();
             return mappedResult;
         }
@@ -59,8 +64,14 @@ namespace HotelServices.Services
             return mappedResult;
         }
 
+        public async Task<TEntity> GetAsyncWithoutDTO(Expression<Func<TEntity, bool >> predicate, params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            var result = await _repository.GetAsync(predicate, includeProperties);
+            return result;
+        }
 
-        public async Task UpdateAsync(TEntityUpdateDTO entity)
+
+        public virtual async Task UpdateAsync(TEntityUpdateDTO entity)
         {
             if (entity == null)
             {
@@ -72,6 +83,15 @@ namespace HotelServices.Services
             await _repository.UpdateAsync(mapped);
         }
 
+
+        public async Task SaveChanges()
+        {
+            
+            await _repository.SaveChanges();
+           
+
+        }
+
         private async Task ValidateEntityAsync(TEntity entity)
         {
             var validationResult = await _validator.ValidateAsync(entity);
@@ -79,6 +99,11 @@ namespace HotelServices.Services
             {
                 throw new ValidationException(validationResult.Errors);
             }
+        }
+
+        public async Task<List<TEntityGetDTO>> GetAllAsyncProjection<TEntityGetDto>(Expression<Func<TEntity, bool>> predicate = null)
+        {
+            return await _repository.GetAllAsyncProjection<TEntityGetDTO>(predicate);
         }
     }
 }

@@ -17,13 +17,26 @@ namespace HotelAPI.Application.Services
         CustomerForCreateDTO, 
         CustomerForUpdateDTO>, ICustomerService
     {
-        private IGenericRepository<Customer> GRepository;
-        public CustomerService(IGenericRepository<Customer> repository, IValidator<Customer> validator) : base(repository, validator)
+        private IGenericRepository<Customer, CustomerForGetDTO> GRepository;
+        public CustomerService(IGenericRepository<Customer, CustomerForGetDTO> repository, IValidator<Customer> validator) : base(repository, validator)
         {
             GRepository = repository;
         }
 
-     
 
+        public  override async Task UpdateAsync(CustomerForUpdateDTO entity)
+        {
+            var customer = await GetAsyncWithoutDTO(x => x.Id == entity.Id);
+            if (customer == null) throw new ArgumentException("Customer not found");
+            if (entity.FirstName != null) customer.FirstName = entity.FirstName;
+            if (entity.LastName != null) customer.LastName = entity.LastName;
+            if (entity.Email != null)
+            {
+                customer.Email = entity.Email;
+                customer.UserName = entity.Email;
+                customer.NormalizedUserName = entity.Email.ToUpper();
+            }
+            if (entity.PhoneNumber != null) customer.PhoneNumber = entity.PhoneNumber;
+        }
     }
 }

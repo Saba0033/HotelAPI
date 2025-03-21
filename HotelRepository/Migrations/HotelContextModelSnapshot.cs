@@ -105,9 +105,9 @@ namespace HotelRepository.Migrations
                             LastName = "Ekhvaia",
                             NormalizedEmail = "SEKHV23@FREEUNI.EDU.GE",
                             NormalizedUserName = "SEKHV23@FREEUNI.EDU.GE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAokGrrQCm+yNDfDtEeEIOegQfY7cEwliXwSPfFC7Y69Dqsp6+NzB0atWsT6FzECjA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE5CKuzkNnk6bWUqWSdjQYRT27Knbs0sSBnyfP9NVdo7YGDDMFCWCDq22PqrD5FbdA==",
                             PhoneNumber = "123456789",
-                            SecurityStamp = "0761ec82-5289-4876-a604-8dc2e8b0f7ac",
+                            SecurityStamp = "8fb18cd9-ee28-41aa-bf63-6b992bd5f79a",
                             UserName = "sekhv23@freeuni.edu.ge"
                         },
                         new
@@ -121,9 +121,9 @@ namespace HotelRepository.Migrations
                             LastName = "Kavtaradze",
                             NormalizedEmail = "NIKA123@GMAIL.COM",
                             NormalizedUserName = "NIKA123@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJYPY+2RUojPDDAziY/Bq64cY9w9p9hKxcyotW1C722g1XvcJXT0lpZcTFE+A2MAlA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIT3R4Jvc6UzqdX8xZoOkoq9EkXP110JxarQzwCSWKN3saoObG8BVocpGk2U8Ae6tA==",
                             PhoneNumber = "123456789",
-                            SecurityStamp = "0fb136f7-4e19-4eab-8e5f-caac691d8371",
+                            SecurityStamp = "d72f3930-8a8c-4f9d-ac7b-5c3dcc214f64",
                             UserName = "Nika123@gmail.com"
                         },
                         new
@@ -137,9 +137,9 @@ namespace HotelRepository.Migrations
                             LastName = "Kavtaradze",
                             NormalizedEmail = "GIO@GMAIL.COM",
                             NormalizedUserName = "GIO@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKxbW05tcYah/sFD1xhTS5fcqnmmOQGRVX9Qb2hC2psph3ePdJgJGwEpUH2LO+phdQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENYyGGp0qbaShHf2kEN+JaQcSnJEeZKIWS1UNEVtaJJ/U7mM8PDod5Mz2uavIbhvbg==",
                             PhoneNumber = "123456789",
-                            SecurityStamp = "1c0c63f1-e48b-434b-98ca-79192fa66f43",
+                            SecurityStamp = "a2ef9158-c0c2-40d5-83a1-abcc266093c6",
                             UserName = "Gio@gmail.com"
                         },
                         new
@@ -153,9 +153,9 @@ namespace HotelRepository.Migrations
                             LastName = "Kavtaradze",
                             NormalizedEmail = "NINO@GMAIL.COM",
                             NormalizedUserName = "NINO@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJSEIluTaSl3w22vuKITXquGMlOqAkHv2Bb4vy+DGDgx/yrzykDiNDl/AHKUft6MJA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHOMI76PB3b85+8VccPf+a+y27zUWsq3TNg4LHa6RVnqakv2ANul7XbO0Q1gZj4Vzw==",
                             PhoneNumber = "123456789",
-                            SecurityStamp = "d1623fc9-afed-4dd3-ba55-442c91d95a51",
+                            SecurityStamp = "52226c1b-245f-438a-99f1-623b3394f43c",
                             UserName = "Nino@gmail.com"
                         },
                         new
@@ -169,9 +169,9 @@ namespace HotelRepository.Migrations
                             LastName = "Kavtaradze",
                             NormalizedEmail = "ANA@GMAIL.COM",
                             NormalizedUserName = "ANA@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEM1+q1ep0NrZA0LS91VftcrHoGDA/faFFj2lSlfZXaozLmxvPAGmin9zQ08jJLXtCQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAbsBKjypVjBTJaKK3asGVfX2iKgd17t7yn/FEo/pPovAtb4qdXlSdOU+ioYjXMdCg==",
                             PhoneNumber = "123456789",
-                            SecurityStamp = "1343dc65-2f3f-4f39-8b60-33257afff2ab",
+                            SecurityStamp = "e476683a-5d6d-4d2e-b5ab-d4303862bda9",
                             UserName = "Ana@gmail.com"
                         },
                         new
@@ -185,9 +185,9 @@ namespace HotelRepository.Migrations
                             LastName = "Doe",
                             NormalizedEmail = "GOLDENPALACEMANAGER@GMAIL.COM",
                             NormalizedUserName = "GOLDENPALACEMANAGER@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECW21d2Eu3c3+vELOftF0i/6r64KbdeNzyAH2U4o9o6dL1D3GF1LwgCaJ9w0iJ2ntQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJledpaCbnKVJr27OSSgbiWVyeG2GDdpk2m9TC4aWxipMYPdMQKIpMOfe7uz83McAQ==",
                             PhoneNumber = "123456789",
-                            SecurityStamp = "b35d61c3-d21b-4d7c-8977-49860bee5f06",
+                            SecurityStamp = "d1679d0d-8011-4727-aad5-3f9850af9025",
                             UserName = "GoldenPalaceManager@gmail.com"
                         },
                         new
@@ -201,9 +201,9 @@ namespace HotelRepository.Migrations
                             LastName = "Chan",
                             NormalizedEmail = "AURAMANAGER@GMAIL.COM",
                             NormalizedUserName = "AURAMANAGER@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBBz95Azu7NPXFqZnJSZL0HaOnhwuIrnbWEHuIRA99ZEQ7y23prmwpmCzhvfj+X2RQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ8DegiE3mYAs+8rb8eNgTHcUDPr6Z6sGRkbjVHXzzdWkv350YhKgJ9goclMuN+2CQ==",
                             PhoneNumber = "123456789",
-                            SecurityStamp = "18c135ac-53c2-4a45-b80b-443b1858a18e",
+                            SecurityStamp = "8e78fc4c-c77e-492c-a063-753c94ea0a78",
                             UserName = "AuraManager@gmail.com"
                         },
                         new
@@ -217,9 +217,9 @@ namespace HotelRepository.Migrations
                             LastName = "Bond",
                             NormalizedEmail = "MOGZAURIMANAGER@GMAIL.COM",
                             NormalizedUserName = "MOGZAURIMANAGER@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEG7BtAM9dt31F4GKwLY94jXbUT/RqKN0WorGIWyQTTf3Q+m7PVS2hxANzXQvF080cQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKZ33f0VAkdke32FRt6nkPeQcjLnsD/rGl6Gzfd9mV9Q9O6LVNqqg1q69O3l7qB9Rw==",
                             PhoneNumber = "123456789",
-                            SecurityStamp = "da94aa37-b607-4fd2-83b7-9ec4d579bd09",
+                            SecurityStamp = "fb906835-9d4b-4d93-bbab-b70e0f488173",
                             UserName = "MogzauriManager@gmail.com"
                         });
                 });
@@ -855,7 +855,8 @@ namespace HotelRepository.Migrations
                 {
                     b.HasOne("HotelModels.Entities.Room", "Room")
                         .WithMany("Reservations")
-                        .HasForeignKey("RoomId");
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Room");
                 });

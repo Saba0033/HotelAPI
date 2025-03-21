@@ -1,0 +1,7 @@
+2025-03-21 02:17:51.973 +04:00 [INF] Application is starting...
+2025-03-21 02:17:52.104 +04:00 [INF] User profile is available. Using 'C:\Users\Saba\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-21 02:17:52.435 +04:00 [INF] Now listening on: https://localhost:7246
+2025-03-21 02:17:52.435 +04:00 [INF] Now listening on: http://localhost:5027
+2025-03-21 02:17:52.480 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-21 02:17:52.480 +04:00 [INF] Hosting environment: Development
+2025-03-21 02:17:52.480 +04:00 [INF] Content root path: C:\Users\Saba\desktop\hotelAPI\HotelAPI

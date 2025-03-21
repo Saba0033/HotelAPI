@@ -7,6 +7,7 @@ using HotelAPI.Application.DTOs.RoomDTOs;
 using HotelAPI.Application.Interfaces;
 using HotelAPI.Application.Services;
 using HotelAPI.Extensions;
+using HotelAPI.Middleware;
 using HotelModels.Data;
 using HotelModels.Entities;
 using HotelRepository.Implementations;
@@ -14,9 +15,11 @@ using HotelRepository.Interfaces;
 using HotelServices.Interfaces;
 using HotelServices.Services;
 using HotelServices.Validation;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Serilog;
 
 namespace HotelAPI
 {
@@ -34,11 +37,15 @@ namespace HotelAPI
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
             builder.AddAuthentication();
+            builder.ConfigureLogger();
+           
+            
             //builder.Services.AddAuthentication();
             //builder.Services.AddAuthorization();
             var app = builder.Build();
 
 
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -46,8 +53,23 @@ namespace HotelAPI
             app.UseAuthorization();
             app.MapControllers();
 
-            app.Run();
+            try
+            {
+                Log.Information("Application is starting...");
+                app.Run();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Application terminated unexpectedly");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
+
+      
+
 
     }
 }

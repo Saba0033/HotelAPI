@@ -18,8 +18,17 @@ namespace HotelAPI.Application.Services
         ReservationForCreateDTO,
         ReservationForUpdateDTO>, IReservationService
     {
-        public ReservationService(IGenericRepository<Reservation> repository, IValidator<Reservation> validator) : base(repository, validator)
+        public ReservationService(IGenericRepository<Reservation, ReservationForGetDTO> repository, IValidator<Reservation> validator) : base(repository, validator)
         {
+        }
+
+        public override async Task UpdateAsync(ReservationForUpdateDTO entity)
+        {
+            var reservation = await GetAsyncWithoutDTO(x => x.ReservationId == entity.ReservationId);
+            if (reservation == null) throw new ArgumentException("Reservation not found");
+            if (entity.CheckIn != null) reservation.CheckIn = (DateTime)entity.CheckIn;
+            if (entity.CheckOut != null) reservation.CheckOut = (DateTime)entity.CheckOut;
+            if (entity.RoomId != null) reservation.RoomId = entity.RoomId;
         }
     }
 }

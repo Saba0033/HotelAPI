@@ -18,33 +18,43 @@ namespace HotelServices.Services
     public class HotelService 
         : GenericService<Hotel, HotelForGetDTO, HotelForCreateDTO, HotelForUpdateDTO>, IHotelService
     {
-        private IGenericRepository<Hotel> GRepository;
-        public HotelService(IGenericRepository<Hotel> GRepository, IValidator<Hotel> validator) : base(GRepository, validator)
+        private IGenericRepository<Hotel, HotelForGetDTO> GRepository;
+        public HotelService(IGenericRepository<Hotel, HotelForGetDTO> GRepository, IValidator<Hotel> validator) : base(GRepository, validator)
         {
             this.GRepository = GRepository;
         }
-        public async Task<List<HotelForGetDTO>> GetAllAsyncIncludes(Expression<Func<Hotel, bool>> Predicate = null)
-        {
-            var result = await GRepository.GetAllAsync(Predicate,
-                h=> h.Rooms, h=> h.Manager);
-            var mappedResult = result.Adapt<List<HotelForGetDTO>>();
-            return mappedResult;
-        }
-
 
         public async Task<List<HotelForGetDTO>> GetHotelsByCityAsync(string city)
         {
-            return await GetAllAsyncIncludes(x => x.City == city);
+            return await GetAllAsync(x => x.City == city, h=> h.Manager);
+        }
+
+        public  override async Task UpdateAsync(HotelForUpdateDTO entity)
+        {
+            var hotel = await GetAsyncWithoutDTO(x => x.HotelId == entity.HotelId);
+            if (hotel == null) throw new ArgumentException("Hotel not found");
+            if (entity.Address != null) hotel.Address = entity.Address;
+            if (entity.City != null) hotel.City = entity.City;
+            if (entity.Country != null) hotel.Country = entity.Country;
+            if (entity.Name != null) hotel.Name = entity.Name;
+            if (entity.Rating != null) hotel.Rating = (Hotel.HotelRating)entity.Rating;
         }
 
         public async Task<List<HotelForGetDTO>> GetHotelsByCountryAsync(string country)
         {
-            return await GetAllAsyncIncludes(x => x.Country == country);
+            return await GetAllAsync(x => x.Country == country, h => h.Manager);
         }
 
         public async Task<List<HotelForGetDTO>> FilterByRatingAsync(int MinRating, int MaxRating)
         {
-            return await GetAllAsyncIncludes(x => (int)x.Rating >= MinRating && (int)x.Rating <= MaxRating);
+            return await GetAllAsync(x => (int)x.Rating >= MinRating && (int)x.Rating <= MaxRating, h => h.Manager);
         }
+
+
+        //public override async Task DeleteAsync(Expression<Func<Hotel, bool>> predicate)
+        //{
+        //    var hotel = await GetAsyncWithoutDTO(predicate, h=> h.Rooms.Select(x=> x.Reservations));
+
+        //}
     }
 }

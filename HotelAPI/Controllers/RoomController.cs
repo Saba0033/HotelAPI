@@ -32,6 +32,7 @@ namespace HotelAPI.Controllers
         public async Task<ActionResult> AddAsync([FromBody] RoomForCreateDTO entity)
         {
             await service.AddAsync(entity);
+            await service.SaveChanges();
             return Ok();
         }
 
@@ -40,6 +41,7 @@ namespace HotelAPI.Controllers
         public async Task<ActionResult> UpdateAsync([FromBody] RoomForUpdateDTO entity)
         {
             await service.UpdateAsync(entity);
+            await service.SaveChanges();
             return Ok();
         }
 
@@ -47,6 +49,7 @@ namespace HotelAPI.Controllers
         public async Task<ActionResult> DeleteAsync(string Id)
         {
             await service.DeleteAsync(x=> x.RoomId.ToString() == Id);
+            await service.SaveChanges();
             return Ok();
         }
 

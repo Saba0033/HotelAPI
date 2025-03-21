@@ -203,7 +203,8 @@ namespace HotelRepository.Data
                     .HasForeignKey(r => r.HotelId)
                     .OnDelete(DeleteBehavior.Cascade);
 
-                entity.HasMany(r => r.Reservations);
+                entity.HasMany(r => r.Reservations).WithOne(Res => Res.Room).HasForeignKey(res => res.RoomId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
         }
 

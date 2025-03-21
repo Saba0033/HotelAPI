@@ -292,3 +292,10 @@ C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\Microsoft.Extensions.Lo
 C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
 C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Saba\Desktop\HotelAPI\HotelAPI\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\Serilog.dll
+C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\Serilog.Sinks.Console.dll
+C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\Serilog.Sinks.File.dll
+C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\Serilog.Extensions.Logging.dll
+C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\CommonServiceLocator.dll
+C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\CommonServiceLocator.SolrNet.dll
+C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\SolrNet.dll

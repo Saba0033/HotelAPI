@@ -2,6 +2,7 @@
 using FluentValidation;
 using HotelAPI.Application.DTOs.CustomerDTOs;
 using HotelAPI.Application.DTOs.HotelDTOs;
+using HotelAPI.Application.DTOs.ManagerDTOs;
 using HotelAPI.Application.DTOs.ReservationDTOs;
 using HotelAPI.Application.DTOs.RoomDTOs;
 using HotelAPI.Application.Interfaces;
@@ -19,6 +20,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 
 namespace HotelAPI.Extensions
 {
@@ -27,13 +29,18 @@ namespace HotelAPI.Extensions
         public static void AddApplicationServices(this IServiceCollection services)
         {
             // Register repositories
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IGenericRepository<Hotel, HotelForGetDTO>, GenericRepository<Hotel, HotelForGetDTO >>();
+            services.AddScoped<IGenericRepository<Room, RoomForGetDTO>, GenericRepository<Room, RoomForGetDTO>>();
+            services.AddScoped<IGenericRepository<Customer, CustomerForGetDTO>, GenericRepository<Customer, CustomerForGetDTO>>();
+            services.AddScoped<IGenericRepository<Reservation, ReservationForGetDTO>, GenericRepository<Reservation, ReservationForGetDTO>>();
+            services.AddScoped<IGenericRepository<Manager, ManagerForGettingDTO>, GenericRepository<Manager, ManagerForGettingDTO>>();
 
             // Register services
             services.AddScoped<IGenericService<Hotel, HotelForGetDTO, HotelForCreateDTO, HotelForUpdateDTO>, GenericService<Hotel, HotelForGetDTO, HotelForCreateDTO, HotelForUpdateDTO>>();
             services.AddScoped<IGenericService<Room, RoomForGetDTO, RoomForCreateDTO, RoomForUpdateDTO>, GenericService<Room, RoomForGetDTO, RoomForCreateDTO, RoomForUpdateDTO>>();
             services.AddScoped<IGenericService<Customer, CustomerForGetDTO, CustomerForCreateDTO, CustomerForUpdateDTO>, GenericService<Customer, CustomerForGetDTO, CustomerForCreateDTO, CustomerForUpdateDTO>>();
             services.AddScoped<IGenericService<Reservation, ReservationForGetDTO, ReservationForCreateDTO, ReservationForUpdateDTO>, GenericService<Reservation, ReservationForGetDTO, ReservationForCreateDTO, ReservationForUpdateDTO>>();
+            services.AddScoped<IGenericService<Manager, ManagerForGettingDTO, ManagerForCreateDTO,ManagerForUpdateDTO>, GenericService<Manager, ManagerForGettingDTO, ManagerForCreateDTO, ManagerForUpdateDTO>>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IHotelService, HotelService>();
             services.AddScoped<IManagerService, ManagerService>();
@@ -79,6 +86,16 @@ namespace HotelAPI.Extensions
         public static void AddJwtOptions(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<JwtOptions>(configuration.GetSection("ApiSettings:JwtOptions"));
+        }
+
+        public static void ConfigureLogger(this WebApplicationBuilder builder)
+        {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                //.WriteTo.File("C:\\Users\\Saba\\desktop\\hotelAPI\\HotelAPI\\Logs\\logs.txt")
+                .WriteTo.Console()
+                .CreateLogger();
+            builder.Services.AddSingleton<ILoggerFactory>(new LoggerFactory().AddSerilog());
         }
 
         public static void AddAuthentication(this WebApplicationBuilder builder)

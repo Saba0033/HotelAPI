@@ -19,8 +19,18 @@ namespace HotelAPI.Application.Services
         ManagerForCreateDTO,
         ManagerForUpdateDTO>, IManagerService
     {
-        public ManagerService(IGenericRepository<Manager> repository, IValidator<Manager> validator) : base(repository, validator)
+        public ManagerService(IGenericRepository<Manager, ManagerForGettingDTO> repository, IValidator<Manager> validator) : base(repository, validator)
         {
+        }
+
+        public override async Task UpdateAsync(ManagerForUpdateDTO entity)
+        {
+            var manager = await GetAsyncWithoutDTO(x => x.ManagerId == entity.ManagerId);
+            if (manager == null) throw new ArgumentException("Manager not found");
+            if (entity.FirsName != null) manager.FirsName = entity.FirsName;
+            if (entity.LastName != null) manager.LastName = entity.LastName;
+            if (entity.Email != null) manager.Email = entity.Email;
+            if (entity.PhoneNumber != null) manager.PhoneNumber = entity.PhoneNumber;
         }
     }
 }

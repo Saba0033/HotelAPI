@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "lbre1n9wr9M=",
+  "dgSpecHash": "oUo0JHczeOs=",
   "success": true,
   "projectFilePath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelRepository\\HotelAPI.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Saba\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Saba\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
     "C:\\Users\\Saba\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Saba\\.nuget\\packages\\mapster\\7.4.0\\mapster.7.4.0.nupkg.sha512",
+    "C:\\Users\\Saba\\.nuget\\packages\\mapster.core\\1.2.1\\mapster.core.1.2.1.nupkg.sha512",
     "C:\\Users\\Saba\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\9.0.3\\microsoft.aspnetcore.cryptography.internal.9.0.3.nupkg.sha512",
     "C:\\Users\\Saba\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\9.0.3\\microsoft.aspnetcore.cryptography.keyderivation.9.0.3.nupkg.sha512",
     "C:\\Users\\Saba\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\9.0.3\\microsoft.aspnetcore.identity.entityframeworkcore.9.0.3.nupkg.sha512",

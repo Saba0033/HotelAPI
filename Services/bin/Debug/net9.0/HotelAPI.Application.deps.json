@@ -984,6 +984,7 @@
       "HotelAPI.Infrastructure/1.0.0": {
         "dependencies": {
           "HotelAPI.Domain": "1.0.0",
+          "Mapster": "7.4.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.2"
         },
         "runtime": {
