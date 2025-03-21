@@ -1,12 +1,15 @@
-﻿using System.Text;
+﻿using System.Configuration;
+using System.Text;
 using FluentValidation;
 using HotelAPI.Application.DTOs.CustomerDTOs;
+using HotelAPI.Application.DTOs.CustomerReservationDTOs;
 using HotelAPI.Application.DTOs.HotelDTOs;
 using HotelAPI.Application.DTOs.ManagerDTOs;
 using HotelAPI.Application.DTOs.ReservationDTOs;
 using HotelAPI.Application.DTOs.RoomDTOs;
 using HotelAPI.Application.Interfaces;
 using HotelAPI.Application.Services;
+using HotelAPI.Domain.Email;
 using HotelAPI.Domain.Identity;
 using HotelModels.Data;
 using HotelModels.Entities;
@@ -34,14 +37,17 @@ namespace HotelAPI.Extensions
             services.AddScoped<IGenericRepository<Customer, CustomerForGetDTO>, GenericRepository<Customer, CustomerForGetDTO>>();
             services.AddScoped<IGenericRepository<Reservation, ReservationForGetDTO>, GenericRepository<Reservation, ReservationForGetDTO>>();
             services.AddScoped<IGenericRepository<Manager, ManagerForGettingDTO>, GenericRepository<Manager, ManagerForGettingDTO>>();
-
+            services.AddScoped<IGenericRepository<CustomerReservation, CustomerReservationForGet>, GenericRepository<CustomerReservation, CustomerReservationForGet>>();
             // Register services
             services.AddScoped<IGenericService<Hotel, HotelForGetDTO, HotelForCreateDTO, HotelForUpdateDTO>, GenericService<Hotel, HotelForGetDTO, HotelForCreateDTO, HotelForUpdateDTO>>();
             services.AddScoped<IGenericService<Room, RoomForGetDTO, RoomForCreateDTO, RoomForUpdateDTO>, GenericService<Room, RoomForGetDTO, RoomForCreateDTO, RoomForUpdateDTO>>();
             services.AddScoped<IGenericService<Customer, CustomerForGetDTO, CustomerForCreateDTO, CustomerForUpdateDTO>, GenericService<Customer, CustomerForGetDTO, CustomerForCreateDTO, CustomerForUpdateDTO>>();
             services.AddScoped<IGenericService<Reservation, ReservationForGetDTO, ReservationForCreateDTO, ReservationForUpdateDTO>, GenericService<Reservation, ReservationForGetDTO, ReservationForCreateDTO, ReservationForUpdateDTO>>();
             services.AddScoped<IGenericService<Manager, ManagerForGettingDTO, ManagerForCreateDTO,ManagerForUpdateDTO>, GenericService<Manager, ManagerForGettingDTO, ManagerForCreateDTO, ManagerForUpdateDTO>>();
+            services.AddScoped<IGenericService<CustomerReservation,  CustomerReservationForGet,CustomerReservationForCreate, CustomerReservationForUpdate>, GenericService<CustomerReservation,  CustomerReservationForGet,CustomerReservationForCreate, CustomerReservationForUpdate>>();
+            
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<ICustomerReservationService, CustomerReservationService>();
             services.AddScoped<IHotelService, HotelService>();
             services.AddScoped<IManagerService, ManagerService>();
             services.AddScoped<IRoomService, RoomService>();
@@ -49,7 +55,7 @@ namespace HotelAPI.Extensions
             services.AddScoped<IJwtGenerator, JwtGenerator>();
             services.AddScoped<IAuthService, AuthService>();
 
-            
+       
 
             services.AddValidatorsFromAssembly(typeof(HotelValidator).Assembly);
 
@@ -88,6 +94,11 @@ namespace HotelAPI.Extensions
             services.Configure<JwtOptions>(configuration.GetSection("ApiSettings:JwtOptions"));
         }
 
+        public static void AddEmailServiceHotelAPI(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+            services.AddScoped<IEmailService, EmailService>();
+        }
         public static void ConfigureLogger(this WebApplicationBuilder builder)
         {
             Log.Logger = new LoggerConfiguration()

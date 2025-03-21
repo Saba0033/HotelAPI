@@ -14,11 +14,7 @@ namespace HotelAPI.Application.DTOs.ManagerDTOs
         public Guid ManagerId { get; set; }
         public string? FirsName { get; set; }
         public string? LastName { get; set; }
-        public string? IdentityNumber { get; set; }
-        [EmailAddress]
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
-        public Guid? HotelId { get; set; }
-        public Hotel? Hotel { get; set; }
     }
 }

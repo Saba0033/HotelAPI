@@ -5,6 +5,7 @@ using HotelModels.Entities;
 using HotelServices.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NuGet.ProjectModel;
 
 namespace HotelAPI.Controllers
@@ -15,35 +16,38 @@ namespace HotelAPI.Controllers
         IRoomService roomService, 
         ICustomerService customerService, 
         IReservationService reservationService,
-        IManagerService managerService) : ControllerBase
+        IManagerService managerService,
+        IAuthService authService) : ControllerBase
     {
-        
+        //To DO
+        // customer and room delete, 4,5    
         [HttpGet]
         public async Task<ActionResult<List<Hotel>>> GetAllAsync()
         {
-            //var result = await hotelService.GetAllAsyncIncludes();
-            var result = await hotelService.GetAllAsync(null, h=>h.Manager);
+            var result = await hotelService.GetAllAsync(null, query =>query.Include(h=>h.Manager));
             return Ok(result);
         }
 
         [HttpGet("{Id}")]
         public async Task<ActionResult<Hotel>> GetAsync(string Id)
         {
-            var result = await hotelService.GetAsync(x=>x.HotelId.ToString() == Id, hotel => hotel.Rooms, h=> h.Manager, hotel => hotel.Rooms.Select(x => x.Reservations));
+            var result = await hotelService.GetAsync(x=>x.HotelId.ToString() == Id, 
+                query => query.Include(h => h.Manager).Include(h=> h.Rooms));
             return Ok(result);
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> AddAsync([FromBody] HotelForCreateDTO entity)
         {
+
             await hotelService.AddAsync(entity);
             await hotelService.SaveChanges();
             return (Ok());
         }
 
         [HttpPut]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateAsync([FromBody] HotelForUpdateDTO entity)
         {
             await hotelService.UpdateAsync(entity);
@@ -52,7 +56,7 @@ namespace HotelAPI.Controllers
         }
 
         [HttpDelete(template:"{Id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteAsync(string Id)
         {
             await hotelService.DeleteAsync(x=>x.HotelId.ToString() == Id);
@@ -93,24 +97,30 @@ namespace HotelAPI.Controllers
         [Authorize(Roles = "Manager")]
         public async Task<ActionResult<List<Customer>>> GetCustomers(string hotelId)
         {
-            var result = await customerService.GetAllAsync(c=>  c.CustomerReservations.Any(cr => cr.Reservation.Room.HotelId.ToString() == hotelId), 
-        includeProperties: c => c.CustomerReservations);
+            var result = await customerService.GetAllAsync(c=>  c.CustomerReservations.Any(cr => cr.Reservation.Room.HotelId.ToString() == hotelId));
              
             return Ok(result);
         }
 
 
-        [HttpGet(template: "Reservations")]
+        [HttpGet(template: "{hotelId}/Reservations")]
         [Authorize(Roles = "Manager")]
-        public async Task<ActionResult<List<Reservation>>> GetReservations()
+        public async Task<ActionResult<List<Reservation>>> GetReservations(string hotelId)
         {
-            var result = await reservationService.GetAllAsync(null,
-                k => k.Customers);
+            var result = await reservationService.GetAllAsync(x => x.Room.HotelId.ToString() == hotelId,
+                query => query.Include(x => x.Customers));
             return Ok(result);
         }
 
+        [HttpGet(template: "{hotelId}/Manager")]
+        public async Task<ActionResult> GetManager(string hotelId)
+        {
+            var result = await managerService.GetAsync(x => x.HotelId.ToString() == hotelId);
+            return Ok(result);
+        }
 
-        [HttpGet(template: "updateManager")]
+        [HttpPut(template: "updateManager")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<ActionResult> ChangeManager([FromBody] ManagerForUpdateDTO manager)
         {
             await managerService.UpdateAsync(manager);
@@ -119,10 +129,21 @@ namespace HotelAPI.Controllers
         }
 
 
-        [HttpGet(template: "addManager")]
-        public async Task<ActionResult> ChangeManager([FromBody] ManagerForCreateDTO manager)
+        [HttpPost(template: "addManager")]
+        [Authorize(Roles = "Admin,Manager")]
+        public async Task<ActionResult> AddManager([FromBody] ManagerForCreateDTO manager)
         {
             await managerService.AddAsync(manager);
+            await managerService.SaveChanges();
+            return Ok();
+        }
+
+
+        [HttpDelete(template: "{hotelId}/DeleteManager")]
+        [Authorize(Roles = "Admin,Manager")]
+        public async Task<ActionResult> DeleteManager(string hotelId)
+        {
+            await managerService.DeleteAsync(m=> m.HotelId.ToString() == hotelId);
             await managerService.SaveChanges();
             return Ok();
         }

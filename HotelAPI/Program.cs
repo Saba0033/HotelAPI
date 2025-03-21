@@ -38,7 +38,7 @@ namespace HotelAPI
             builder.Services.AddOpenApi();
             builder.AddAuthentication();
             builder.ConfigureLogger();
-           
+            builder.Services.AddEmailServiceHotelAPI(builder.Configuration);
             
             //builder.Services.AddAuthentication();
             //builder.Services.AddAuthorization();

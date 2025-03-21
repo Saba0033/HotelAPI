@@ -133,6 +133,7 @@ namespace HotelRepository.Data
             modelBuilder.Entity<Manager>(entity =>
             {
                 entity.HasKey(m => m.ManagerId);
+                //entity.HasIndex(m=>m.Email).IsUnique();
 
                 entity.Property(m => m.FirsName)
                     .IsRequired()

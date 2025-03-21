@@ -11,6 +11,7 @@ using FluentValidation;
 using HotelAPI.Application.Interfaces;
 using HotelRepository.Interfaces;
 using HotelServices.Services;
+using Humanizer;
 
 namespace HotelAPI.Application.Services
 {
@@ -19,8 +20,10 @@ namespace HotelAPI.Application.Services
         ManagerForCreateDTO,
         ManagerForUpdateDTO>, IManagerService
     {
-        public ManagerService(IGenericRepository<Manager, ManagerForGettingDTO> repository, IValidator<Manager> validator) : base(repository, validator)
+        private ICustomerService customerService;
+        public ManagerService(IGenericRepository<Manager, ManagerForGettingDTO> repository,ICustomerService customerService, IValidator<Manager> validator) : base(repository, validator)
         {
+            this.customerService = customerService;
         }
 
         public override async Task UpdateAsync(ManagerForUpdateDTO entity)
@@ -31,6 +34,15 @@ namespace HotelAPI.Application.Services
             if (entity.LastName != null) manager.LastName = entity.LastName;
             if (entity.Email != null) manager.Email = entity.Email;
             if (entity.PhoneNumber != null) manager.PhoneNumber = entity.PhoneNumber;
+        }
+
+        public override async Task AddAsync(ManagerForCreateDTO entity)
+        {
+            if (await customerService.GetAsync(x => x.IdentityNumber == entity.IdentityNumber) == null)
+            {
+                throw new NoMatchFoundException($"Manager with identity number {entity.IdentityNumber} is not registered");
+            }
+            base.AddAsync(entity);
         }
     }
 }

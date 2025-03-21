@@ -14,19 +14,18 @@ namespace HotelServices.Interfaces
         where TEntityUpdateDTO : class
     {
         Task<List<TEntityGetDTO>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null,
-            params Expression<Func<TEntity, object>>[] includeProperties);
+            Func<IQueryable<TEntity>, IQueryable<TEntity>> includeProperties = null);
 
         Task<TEntityGetDTO> GetAsync(Expression<Func<TEntity, bool>> predicate,
-            params Expression<Func<TEntity, object>>[] includeProperties);
+            Func<IQueryable<TEntity>, IQueryable<TEntity>> includeProperties = null);
 
         Task AddAsync(TEntityCreateDTO entity);
         Task UpdateAsync(TEntityUpdateDTO entity);
         Task DeleteAsync(Expression<Func<TEntity,bool>> predicate);
         Task SaveChanges();
-        Task<List<TEntityGetDTO>> GetAllAsyncProjection<TGetDto>(
-            Expression<Func<TEntity, bool>> predicate = null);
+        Task<List<TEntityGetDTO>> GetAllAsyncProjection<TGetDto>(Expression<Func<TEntity, bool>> predicate = null);
 
         Task<TEntity> GetAsyncWithoutDTO(Expression<Func<TEntity, bool>> predicate,
-            params Expression<Func<TEntity, object>>[] includeProperties);
+            Func<IQueryable<TEntity>, IQueryable<TEntity>> includeProperties = null);
     }
 }

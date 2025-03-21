@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HotelAPI.Domain.Entities;
+using HotelAPI.Domain;
 using HotelModels.Entities;
 using HotelRepository.Data;
 using Microsoft.AspNetCore.Identity;

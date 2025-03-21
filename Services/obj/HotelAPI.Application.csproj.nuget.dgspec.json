@@ -11,7 +11,7 @@
         "projectName": "HotelAPI.Domain",
         "projectPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelModels\\HotelAPI.Domain.csproj",
         "packagesPath": "C:\\Users\\Saba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\obj\\",
+        "outputPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelModels\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -213,6 +213,14 @@
             "FluentValidation": {
               "target": "Package",
               "version": "[11.11.0, )"
+            },
+            "Humanizer.Core": {
+              "target": "Package",
+              "version": "[2.14.1, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.11.0, )"
             },
             "Mapster": {
               "target": "Package",

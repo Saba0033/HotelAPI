@@ -299,3 +299,6 @@ C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\Serilog.Extensions.Logg
 C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\CommonServiceLocator.dll
 C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\CommonServiceLocator.SolrNet.dll
 C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\SolrNet.dll
+C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
+C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\MailKit.dll
+C:\Users\Saba\desktop\hotelAPI\HotelAPI\bin\Debug\net9.0\MimeKit.dll

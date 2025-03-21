@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 using FluentValidation;
 using HotelAPI.Application.DTOs.HotelDTOs;
 using HotelAPI.Application.DTOs.RoomDTOs;
+using HotelAPI.Application.Exceptions;
 using HotelModels.Entities;
 using HotelRepository.Interfaces;
 using HotelServices.Interfaces;
+using Humanizer;
 using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelServices.Services
 {
@@ -26,13 +29,13 @@ namespace HotelServices.Services
 
         public async Task<List<HotelForGetDTO>> GetHotelsByCityAsync(string city)
         {
-            return await GetAllAsync(x => x.City == city, h=> h.Manager);
+            return await GetAllAsync(x => x.City == city, query => query.Include(h => h.Manager));
         }
 
         public  override async Task UpdateAsync(HotelForUpdateDTO entity)
         {
             var hotel = await GetAsyncWithoutDTO(x => x.HotelId == entity.HotelId);
-            if (hotel == null) throw new ArgumentException("Hotel not found");
+            if (hotel == null) throw new NoMatchFoundException($"No hotel with id {entity.HotelId} was found. Ensure the hotel ID is correct or create a new hotel if needed.");
             if (entity.Address != null) hotel.Address = entity.Address;
             if (entity.City != null) hotel.City = entity.City;
             if (entity.Country != null) hotel.Country = entity.Country;
@@ -42,19 +45,29 @@ namespace HotelServices.Services
 
         public async Task<List<HotelForGetDTO>> GetHotelsByCountryAsync(string country)
         {
-            return await GetAllAsync(x => x.Country == country, h => h.Manager);
+            return await GetAllAsync(x => x.Country == country, query => query.Include(h=> h.Manager));
         }
 
         public async Task<List<HotelForGetDTO>> FilterByRatingAsync(int MinRating, int MaxRating)
         {
-            return await GetAllAsync(x => (int)x.Rating >= MinRating && (int)x.Rating <= MaxRating, h => h.Manager);
+            return await GetAllAsync(x => (int)x.Rating >= MinRating && 
+                                          (int)x.Rating <= MaxRating, query => query.Include(h => h.Manager));
         }
 
 
-        //public override async Task DeleteAsync(Expression<Func<Hotel, bool>> predicate)
-        //{
-        //    var hotel = await GetAsyncWithoutDTO(predicate, h=> h.Rooms.Select(x=> x.Reservations));
+        public override async Task DeleteAsync(Expression<Func<Hotel, bool>> predicate)
+        {
+            var hotel = await GetAsyncWithoutDTO(predicate, query => query.Include(h=>h.Rooms).ThenInclude(r=>r.Reservations));
+            if (hotel == null)
+            {
+                throw new NoMatchFoundException("No hotel found. Ensure the hotel ID is correct or create a new hotel if needed.");
+            }
+            if (hotel.Rooms.Any(r => r.Reservations.Any(x=> x.CheckIn < DateTime.Now && x.CheckOut > DateTime.Now)))
+            {
+                throw new ActiveReservationException();
+            }
 
-        //}
+            await base.DeleteAsync(predicate);
+        }
     }
 }

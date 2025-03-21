@@ -1,0 +1,6 @@
+{
+  "HotelAPI.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Saba\\Desktop\\HotelAPI\\Services",
+  "HotelAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelAPI",
+  "HotelAPI.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels",
+  "HotelAPI.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository"
+}

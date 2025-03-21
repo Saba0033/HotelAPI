@@ -30,7 +30,7 @@ namespace HotelServices.Services
             _validator = validator ?? throw new ArgumentNullException(nameof(validator));
         }
 
-        public  async Task AddAsync(TEntityCreateDTO entity)
+        public  virtual async Task AddAsync(TEntityCreateDTO entity)
         {
             if (entity == null)
             {
@@ -48,7 +48,7 @@ namespace HotelServices.Services
         }
 
         public async Task<List<TEntityGetDTO>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null,
-            params Expression<Func<TEntity, object>>[] includeProperties)
+            Func<IQueryable<TEntity>, IQueryable<TEntity>> includeProperties = null)
         {
             var result = await _repository.GetAllAsync(predicate, includeProperties);
             
@@ -57,14 +57,16 @@ namespace HotelServices.Services
         }
 
      
-        public async Task<TEntityGetDTO> GetAsync(Expression<Func<TEntity,bool >> predicate, params Expression<Func<TEntity, object>>[] includeProperties)
+        public async Task<TEntityGetDTO> GetAsync(Expression<Func<TEntity,bool >> predicate, 
+            Func<IQueryable<TEntity>, IQueryable<TEntity>> includeProperties = null) 
         {
             var result = await _repository.GetAsync(predicate, includeProperties);
             var mappedResult = result.Adapt<TEntityGetDTO>();
             return mappedResult;
         }
 
-        public async Task<TEntity> GetAsyncWithoutDTO(Expression<Func<TEntity, bool >> predicate, params Expression<Func<TEntity, object>>[] includeProperties)
+        public async Task<TEntity> GetAsyncWithoutDTO(Expression<Func<TEntity, bool >> predicate, 
+            Func<IQueryable<TEntity>, IQueryable<TEntity>> includeProperties = null)
         {
             var result = await _repository.GetAsync(predicate, includeProperties);
             return result;

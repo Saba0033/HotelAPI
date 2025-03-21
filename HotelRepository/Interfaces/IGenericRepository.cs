@@ -9,9 +9,10 @@ namespace HotelRepository.Interfaces
     {
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
-        Task<T> GetAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] IncludeProperties);
+        Task<T> GetAsync(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IQueryable<T>> includeProperties);
         Task DeleteAsync(Expression<Func<T, bool>> predicate);
-        Task<List<T>> GetAllAsync(Expression<Func<T, bool>> Predicate = null, params Expression<Func<T, object>>[] IncludeProperties);
+        Task<List<T>> GetAllAsync(Expression<Func<T, bool>> Predicate, 
+            Func<IQueryable<T>, IQueryable<T>> includeProperties);
         Task SaveChanges();
 
         Task<List<TGetDto>> GetAllAsyncProjection<TGetDto>(

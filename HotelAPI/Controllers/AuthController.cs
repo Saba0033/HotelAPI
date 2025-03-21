@@ -1,4 +1,5 @@
-﻿using HotelAPI.Application.DTOs.Identity;
+﻿using HotelAPI.Application.DTOs.CustomerDTOs;
+using HotelAPI.Application.DTOs.Identity;
 using HotelAPI.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,25 +12,25 @@ namespace HotelAPI.Controllers
     public class AuthController(IAuthService authService) : ControllerBase
     {
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromForm] RegistrationRequestDTO model)
+        [HttpPost("register/Customer")]
+        public async Task<IActionResult> Register([FromForm]CustomerForCreateDTO model)
         {
             await authService.Register(model);
             return Created();
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpPost("registerAdmin")]
-        public async Task<IActionResult> RegisterAdmin([FromForm] RegistrationRequestDTO model)
+        [HttpPost("register/Admin")]
+        public async Task<IActionResult> RegisterAdmin([FromForm] CustomerForCreateDTO model)
         {
             await authService.RegisterAdmin(model);
             return Created();
 
         }
 
-        [Authorize(Roles = "Manager")]
-        [HttpPost("registerManager")]
-        public async Task<IActionResult> RegisterManager([FromForm] RegistrationRequestDTO model)
+        [Authorize(Roles = "Manager,Admin")]
+        [HttpPost("register/Manager")]
+        public async Task<IActionResult> RegisterManager([FromForm] CustomerForCreateDTO model)
         {
             await authService.RegisterManager(model);
             return Created();
@@ -41,6 +42,13 @@ namespace HotelAPI.Controllers
             var result = await authService.Login(model);
             return Ok(result);
 
+        }
+
+        [HttpPost("DeleteCustomer")]
+        public async Task<IActionResult> DeleteCustomer()
+        {
+          
+            return Ok();
         }
     }
 }

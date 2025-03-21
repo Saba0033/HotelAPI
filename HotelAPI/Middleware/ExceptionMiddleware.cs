@@ -1,4 +1,7 @@
-﻿namespace HotelAPI.Middleware
+﻿using FluentValidation;
+using Humanizer;
+
+namespace HotelAPI.Middleware
 {
     using System.Net;
     using System.Text.Json;
@@ -27,15 +30,45 @@
             {
                 await _next(context);
             }
-            catch(DuplicateEntryException ex)
+            catch (DuplicateEntryException ex)
             {
                 _logger.LogError(ex, "DuplicateEntryException caught");
                 await HandleExceptionAsync(context, ex);
             }
-            catch(DbUpdateException dbEx)
+            catch (DbUpdateException dbEx)
             {
                 _logger.LogError(dbEx, "Database exception caught");
                 await HandleExceptionAsync(context, dbEx);
+            }
+            catch (RoomBusyException ex)
+            {
+                _logger.LogError(ex, "RoomBusyException exception caught");
+                await HandleExceptionAsync(context, ex);
+            }
+            catch (NoMatchFoundException ex)
+            {
+                _logger.LogError(ex, "NoMatchFoundException exception caught");
+                await HandleExceptionAsync(context, ex);
+            }
+            catch (ValidationException ex)
+            {
+                _logger.LogError(ex, "Validation exception caught");
+                await HandleExceptionAsync(context, ex);
+            }
+            catch (ActiveReservationException ex)
+            {
+                _logger.LogError(ex, "ActiveReservationException exception caught");
+                await HandleExceptionAsync(context, ex);
+            }
+            catch (InvalidOperationException ex)
+            {
+                _logger.LogError("InvalidOperationException exception caught");
+                await HandleExceptionAsync(context, ex);
+            }
+            catch (ArgumentNullException ex)
+            {
+                _logger.LogError("ArgumentNullException exception caught");
+                await HandleExceptionAsync(context, ex);
             }
             catch (Exception ex)
             {
@@ -54,7 +87,7 @@
             {
                 case ArgumentNullException argNullEx:
                     statusCode = (int)HttpStatusCode.BadRequest;
-                    response = new { message = argNullEx.Message }; 
+                    response = new { message = "Value was not found" };
                     break;
 
                 case DuplicateEntryException:
@@ -66,10 +99,33 @@
                     statusCode = (int)HttpStatusCode.Conflict;
                     response = new { message = dbEx.InnerException.Message };
                     break;
-
+                case DbUpdateException dbExc:
+                    statusCode = (int)HttpStatusCode.Conflict;
+                    response = new { message = dbExc.InnerException.Message };
+                    break;
+                case RoomBusyException roomBusyEx:
+                    statusCode = (int)HttpStatusCode.Conflict;
+                    response = new{message = roomBusyEx.Message};
+                    break;
+                case NoMatchFoundException noMatchEx:
+                    statusCode = (int)HttpStatusCode.NotFound;
+                    response = new { message = noMatchEx.Message };
+                    break;
+                case ValidationException validationEx:
+                    statusCode = (int)HttpStatusCode.BadRequest;
+                    response = new { message = validationEx.Message };
+                    break;
+                case ActiveReservationException activeResEx:
+                    statusCode = (int)HttpStatusCode.Conflict;
+                    response = new { message = activeResEx.Message };
+                    break;
+                case InvalidOperationException invalidOpEx:
+                    statusCode = (int)HttpStatusCode.Conflict;
+                    response = new { message = invalidOpEx.Message };
+                    break;
+                
                 default:
                     _logger.LogError(ex, "Unhandled exception occurred.");
-                    
                     break;
             }
 

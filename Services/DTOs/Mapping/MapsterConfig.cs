@@ -45,7 +45,7 @@ namespace HotelAPI.Application.DTOs.Mapping
             TypeAdapterConfig<Reservation, ReservationForGetDTO>.NewConfig().
                 Map(dest => dest.Customers, source => source.Customers != null ? source.Customers.Select(c => c.Customer.Adapt<CustomerForReservationDTO>()) : new List<CustomerForReservationDTO>());
 
-            TypeAdapterConfig<RegistrationRequestDTO, Customer>.NewConfig()
+            TypeAdapterConfig<CustomerForCreateDTO, Customer>.NewConfig()
                 .Map(dest => dest.UserName, source => source.Email)
                 .Map(dest => dest.NormalizedEmail,src => src.Email.ToUpper());
         }

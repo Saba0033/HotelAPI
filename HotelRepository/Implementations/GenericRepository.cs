@@ -17,12 +17,12 @@ namespace HotelRepository.Implementations
     {
 
         public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> Predicate = null
-            , params Expression<Func<T, object>>[] IncludeProperties)
+            , Func<IQueryable<T>, IQueryable<T>> includeProperties = null)
         {
             IQueryable<T> query = _context.Set<T>();
-            foreach (var IncludeProperty in IncludeProperties)
+            if (includeProperties != null)
             {
-                query = query.Include(IncludeProperty);
+                query = includeProperties(query);
             }
             var result = Predicate == null ? await query.ToListAsync() : await query.Where(Predicate).ToListAsync();
             return result;
@@ -30,14 +30,14 @@ namespace HotelRepository.Implementations
 
 
         public async Task<T> GetAsync(Expression<Func<T, bool>> predicate,
-            params Expression<Func<T, object>>[] includeProperties)
+            Func<IQueryable<T>, IQueryable<T>> includeProperties = null)
         {
 
             IQueryable<T> query = _context.Set<T>();
 
-            foreach (var includeProperty in includeProperties)
+            if (includeProperties != null)
             {
-                query = query.Include(includeProperty);
+                query = includeProperties(query);
             }
 
             return await query.FirstOrDefaultAsync(predicate);

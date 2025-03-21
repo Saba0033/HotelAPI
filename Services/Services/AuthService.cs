@@ -4,6 +4,8 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation;
+using HotelAPI.Application.DTOs.CustomerDTOs;
 using HotelAPI.Application.DTOs.Identity;
 using HotelAPI.Application.Interfaces;
 using HotelModels.Entities;
@@ -21,12 +23,9 @@ namespace HotelAPI.Application.Services
         private const string Manager = "Manager";
 
 
-        public async Task Register(RegistrationRequestDTO model)
+        public async Task Register(CustomerForCreateDTO model)
         {
-            var existingUser = await _userManager.FindByEmailAsync(model.Email);
-            if (existingUser != null)
-                throw new InvalidOperationException("user with this email already exists.");
-
+            if (model.IdentityNumber.ToString().Length != 11) throw new ValidationException("Identity number must be 11 digits long");
             var mapped = model.Adapt<Customer>();
             var result = await _userManager.CreateAsync(mapped, model.Password);
             if (!result.Succeeded)
@@ -34,7 +33,7 @@ namespace HotelAPI.Application.Services
             await _userManager.AddToRoleAsync(mapped, Cust);
         }
 
-        public async Task RegisterAdmin(RegistrationRequestDTO model)
+        public async Task RegisterAdmin(CustomerForCreateDTO model)
         {
             var existingUser = await _userManager.FindByNameAsync(model.Email);
             if (existingUser != null)
@@ -65,11 +64,11 @@ namespace HotelAPI.Application.Services
             };
         }
 
-        public async Task RegisterManager(RegistrationRequestDTO model)
+        public async Task RegisterManager(CustomerForCreateDTO model)
         {
             var existingUser = await _userManager.FindByNameAsync(model.Email);
             if (existingUser != null)
-                throw new InvalidOperationException("Admin with this email already exists.");
+                throw new InvalidOperationException("Manager with this email already exists.");
 
             var mapped = model.Adapt<Customer>();
             var result = await _userManager.CreateAsync(mapped, model.Password);
