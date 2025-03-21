@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelModels\\HotelAPI.Domain.csproj": {}
+    "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\HotelAPI.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelModels\\HotelAPI.Domain.csproj": {
+    "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\HotelAPI.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelModels\\HotelAPI.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\HotelAPI.Domain.csproj",
         "projectName": "HotelAPI.Domain",
-        "projectPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelModels\\HotelAPI.Domain.csproj",
+        "projectPath": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\HotelAPI.Domain.csproj",
         "packagesPath": "C:\\Users\\Saba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\obj\\",
+        "outputPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelModels\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

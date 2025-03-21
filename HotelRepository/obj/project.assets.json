@@ -4958,9 +4958,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelRepository\\HotelAPI.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository\\HotelAPI.Infrastructure.csproj",
       "projectName": "HotelAPI.Infrastructure",
-      "projectPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelRepository\\HotelAPI.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelRepository\\HotelAPI.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Saba\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelRepository\\obj\\",
       "projectStyle": "PackageReference",
@@ -4983,8 +4983,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelModels\\HotelAPI.Domain.csproj": {
-              "projectPath": "C:\\Users\\Saba\\desktop\\hotelAPI\\HotelModels\\HotelAPI.Domain.csproj"
+            "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\HotelAPI.Domain.csproj": {
+              "projectPath": "C:\\Users\\Saba\\Desktop\\HotelAPI\\HotelModels\\HotelAPI.Domain.csproj"
             }
           }
         }
