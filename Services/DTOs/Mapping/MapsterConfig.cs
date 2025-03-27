@@ -17,10 +17,6 @@ namespace HotelAPI.Application.DTOs.Mapping
     {
         public static void Configure()
         {
-
-            //TypeAdapterConfig.GlobalSettings.Default.PreserveReference(true);
-            //TypeAdapterConfig.GlobalSettings.Default.IgnoreNullValues = true;
-            //TypeAdapterConfig.GlobalSettings.Default.IgnoreNullValues(true);
             TypeAdapterConfig<Hotel, HotelForGetDTO>.NewConfig()
                 .Map(dest => dest.Rooms, src => src.Rooms != null ? src.Rooms.Adapt<List<RoomForGetDTO>>(): new List<RoomForGetDTO>())
                 .Map(dest => dest.Manager, src => src.Manager != null ? src.Manager.Adapt<ManagerForGettingDTO>() : new ManagerForGettingDTO());

@@ -15,6 +15,7 @@ namespace HotelRepository.Data
             ConfigureManagers(modelBuilder);
             ConfigureReservations(modelBuilder);
             ConfigureRooms(modelBuilder);
+            ConfigureIdentityNames(modelBuilder);
         }
 
         public static void SeedData(this ModelBuilder modelBuilder)
@@ -53,7 +54,6 @@ namespace HotelRepository.Data
                     .HasColumnType("char(11)")
                     .IsUnicode(false);
 
-                //entity.HasCheckConstraint("FixedLenght(11)", "Len[IdentityNumber] = 11");
                 entity.HasIndex(c => c.IdentityNumber)
                     .IsUnique();
 
@@ -84,7 +84,10 @@ namespace HotelRepository.Data
                     .HasForeignKey(cr => cr.ReservationId)
                     .OnDelete(DeleteBehavior.Cascade);
 
-                
+                modelBuilder.Entity<CustomerReservation>()
+                    .Navigation(h => h.Reservation)
+                    .AutoInclude();
+
 
             });
         }
@@ -149,7 +152,7 @@ namespace HotelRepository.Data
                     .HasColumnType("char(11)")
                     .IsUnicode(false);
 
-                //entity.HasCheckConstraint("FixedLenght(11)", "Len[IdentityNumber] = 11");
+             
                 entity.HasIndex(m => m.IdentityNumber)
                     .IsUnique();
 
@@ -207,6 +210,14 @@ namespace HotelRepository.Data
                 entity.HasMany(r => r.Reservations).WithOne(Res => Res.Room).HasForeignKey(res => res.RoomId)
                     .OnDelete(DeleteBehavior.Cascade);
             });
+        }
+        private static void ConfigureIdentityNames(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Customer>(e => e.ToTable("Users/Customers"));
+            modelBuilder.Entity<IdentityRole<Guid>>(e => e.ToTable("Roles"));
+            modelBuilder.Entity<IdentityUserRole<Guid>>(e => e.ToTable("UserRoles"));
+            modelBuilder.Entity<IdentityRole<Guid>>()
+                .HasKey(r => r.Id);
         }
 
         private static void SeedHotels(ModelBuilder modelBuilder)
@@ -610,6 +621,11 @@ namespace HotelRepository.Data
                     Id = CustomerReservationGuid8,
                     CustomerId = CustomerGuid3,
                     ReservationId = ReservationGuid8
+                }, new CustomerReservation
+                {
+                    Id = CustomerReservationGuid9,
+                    CustomerId = CustomerGuid5,
+                    ReservationId = ReservationGuid2
                 }
             );
         }
@@ -724,6 +740,7 @@ namespace HotelRepository.Data
         private static readonly Guid CustomerReservationGuid6 = new Guid("23456789-3456-3456-3456-345678901234");
         private static readonly Guid CustomerReservationGuid7 = new Guid("34567890-4567-4567-4567-456789012345");
         private static readonly Guid CustomerReservationGuid8 = new Guid("45678901-5678-5678-5678-567890123456");
+        private static readonly Guid CustomerReservationGuid9 = new Guid("45678901-5678-5678-5678-567890123426");
         private static readonly Guid IdentityRoleGuid1 = new Guid("56789012-6789-6789-6789-678901234567");
         private static readonly Guid IdentityRoleGuid2 = new Guid("67890123-7890-7890-7890-789012345678");
         private static readonly Guid IdentityRoleGuid3 = new Guid("78901234-8901-8901-8901-890123456789");

@@ -24,26 +24,6 @@ namespace HotelModels.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.ConfigureEntities();
             modelBuilder.SeedData();
-            modelBuilder.Entity<Customer>(e => e.ToTable("Users/Customers"));
-            modelBuilder.Entity<IdentityRole<Guid>>(e => e.ToTable("Roles"));
-            modelBuilder.Entity<IdentityUserRole<Guid>>(e => e.ToTable("UserRoles"));
-            //modelBuilder.Ignore<IdentityRoleClaim<Guid>>();
-            //modelBuilder.Ignore<IdentityUserClaim<Guid>>();
-            //modelBuilder.Ignore<IdentityUserLogin<Guid>>();
-            //modelBuilder.Ignore<IdentityUserToken<Guid>>();
-               
-            modelBuilder.Entity<IdentityRole<Guid>>()
-                .HasKey(r => r.Id);  // Ensure the role's Id is set to Guid
-
-
-
-            modelBuilder.Entity<CustomerReservation>()
-                .Navigation(h => h.Reservation)
-                .AutoInclude();
-
-            modelBuilder.Entity<CustomerReservation>()
-                .Navigation(h => h.Customer)
-                .AutoInclude();  // Auto-include Reservations
         }
 
         public DbSet<Entities.Customer> Customers { get; set; }
@@ -52,7 +32,6 @@ namespace HotelModels.Data
         public DbSet<Entities.Reservation> Reservations { get; set; }
         public DbSet<Entities.Hotel> Hotels { get; set; }
         public DbSet<Entities.Room> Rooms { get; set; }
-        //public DbSet<IdentityRole<Guid>> UserRoles { get; set; }
 
     }
 }

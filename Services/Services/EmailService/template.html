@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-header {
+            background-color: #003366;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+            .email-header h1 {
+                margin: 0;
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+        .email-body {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333333;
+            padding: 20px;
+        }
+
+            .email-body ul {
+                padding: 0;
+                list-style-type: none;
+            }
+
+            .email-body li {
+                padding: 8px 0;
+            }
+
+            .email-body strong {
+                color: #003366;
+            }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+            padding: 12px;
+            text-align: center;
+            background-color: #003366;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+            .cta-button:hover {
+                background-color: #002244;
+            }
+
+        .email-footer {
+            font-size: 12px;
+            color: #666666;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            border-top: 1px solid #dddddd;
+        }
+
+            .email-footer a {
+                color: #003366;
+                text-decoration: none;
+            }
+
+                .email-footer a:hover {
+                    text-decoration: underline;
+                }
+
+        .footer-icons {
+            margin-top: 10px;
+        }
+
+            .footer-icons a {
+                margin: 0 10px;
+            }
+
+            .footer-icons img {
+                width: 20px;
+                height: 20px;
+            }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h1>HotelAPI - Reservation Confirmation</h1>
+        </div>
+        <div class="email-body">
+            <p>Dear {{CustomerName}},</p>
+            <p>We are delighted to confirm your reservation at <strong>HotelAPI</strong>. Please find your booking details below:</p>
+            <ul>
+                <li><strong>Check-in:</strong> {{CheckInDate}}</li>
+                <li><strong>Check-out:</strong> {{CheckOutDate}}</li>
+                <li><strong>Room Name:</strong> {{RoomName}}</li>
+            </ul>
+            <p>If you need to make any changes to your reservation, you can manage it using the link below:</p>
+            <a href="{{ManageBookingURL}}" class="cta-button">Manage Reservation</a>
+            <p>For further assistance, please don't hesitate to reach out to our support team.</p>
+        </div>
+        <div class="email-footer">
+            <p>Thank you for choosing HotelAPI. We look forward to welcoming you!</p>
+            <p>📞 <strong>Contact Us:</strong> <a href="tel:+1234567890">+1 234 567 890</a> | 📧 <a href="mailto:support@hotelapi.com">support@hotelapi.com</a></p>
+            <div class="footer-icons">
+                <a href="https://facebook.com/hotelapi" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
+                <a href="https://twitter.com/hotelapi" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Twitter_Logo_2021.svg" alt="Twitter"></a>
+                <a href="https://linkedin.com/company/hotelapi" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/LinkedIn_icon.svg" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

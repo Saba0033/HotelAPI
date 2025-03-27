@@ -108,7 +108,7 @@ namespace HotelAPI.Controllers
         public async Task<ActionResult<List<Reservation>>> GetReservations(string hotelId)
         {
             var result = await reservationService.GetAllAsync(x => x.Room.HotelId.ToString() == hotelId,
-                query => query.Include(x => x.Customers));
+                query => query.Include(x => x.Customers).ThenInclude(cr => cr.Customer));
             return Ok(result);
         }
 
@@ -149,6 +149,14 @@ namespace HotelAPI.Controllers
         }
 
 
+        [HttpDelete(template: "{customerId}/DeleteCustomer")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> DeleteCustomer(string customerId)
+        {
+            await customerService.DeleteAsync(x => x.Id.ToString() == customerId);
+            await customerService.SaveChanges();
+            return Ok();
+        }
 
     }
 }

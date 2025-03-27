@@ -44,11 +44,9 @@ namespace HotelAPI.Controllers
 
         }
 
-        [HttpPost("DeleteCustomer")]
-        public async Task<IActionResult> DeleteCustomer()
-        {
-          
-            return Ok();
-        }
+        
+
+
+
     }
 }

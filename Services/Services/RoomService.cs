@@ -24,10 +24,12 @@ namespace HotelServices.Services
     {
         private ICustomerReservationService cr;
         private IEmailService emailService;
-        public RoomService(IGenericRepository<Room, RoomForGetDTO> repository,ICustomerReservationService cr, IValidator<Room> validator, IEmailService emailService) : base(repository, validator)
+        private ICustomerService customerService;
+        public RoomService(IGenericRepository<Room, RoomForGetDTO> repository,ICustomerReservationService cr, IValidator<Room> validator, IEmailService emailService, ICustomerService customerService) : base(repository, validator)
         {
             this.cr = cr;
             this.emailService = emailService;
+            this.customerService = customerService;
         }
 
         public override async Task UpdateAsync(RoomForUpdateDTO entity)
@@ -62,9 +64,12 @@ namespace HotelServices.Services
         public async Task AddReservation(string roomId, ReservationForCreateDTO res, string userId, string userEmail)
         {
             if (!Guid.TryParse(roomId, out var validId)) throw new ArgumentException("Invalid GUID format.");
+
             var room = await GetAsyncWithoutDTO(x => x.RoomId == validId, 
                 query => query.Include(r => r.Reservations));
+
             if (room == null) throw new NoMatchFoundException("Room not found");
+
             if (room.Reservations.All(r => r.CheckIn >= res.CheckOut || r.CheckOut <= res.CheckIn))
             {
                 room.Reservations.Add(res.Adapt<Reservation>());
@@ -78,8 +83,11 @@ namespace HotelServices.Services
                 CustomerId = Guid.Parse(userId),
                 ReservationId = room.Reservations.Last().ReservationId
             };
+
             await cr.AddAsync(custRes);
-            await emailService.SendEmailAsync(userEmail, "Reservation", $"You have successfully reserved a room from {res.CheckIn.Humanize()} to {res.CheckOut.Humanize()}");
+
+            var customer  = await customerService.GetAsync(x => x.Id == Guid.Parse(userId));
+            await emailService.SendEmailAsync(userEmail, "Reservation Confirmation", res.CheckIn , res.CheckOut, customer.FirstName, room.Name);
         }
 
         private async Task<List<RoomForGetDTO>> getFreeRooms(Guid? hotelId, DateTime checkIn, DateTime checkOut)
