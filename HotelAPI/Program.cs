@@ -44,8 +44,8 @@ namespace HotelAPI
 
 
             app.UseMiddleware<ExceptionMiddleware>();
+            app.CreateOrUpdateDatabase();
             app.UseHttpsRedirection();
-
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

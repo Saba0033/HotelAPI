@@ -61,18 +61,34 @@ namespace HotelAPI.Extensions
 
         }
 
+        public static void CreateOrUpdateDatabase(this WebApplication app)
+        {
+            using (var scope = app.Services.CreateScope())
+            {
+                var serviceProvider = scope.ServiceProvider;
+
+                try
+                {
+                    var context = serviceProvider.GetRequiredService<HotelContext>();
+                    context.Database.Migrate();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred during database initialization: {ex.Message}");
+                }
+            }
+        }
+
         public static void AddIdentityServices(this IServiceCollection services)
         {
             services.AddIdentity<Customer, IdentityRole<Guid>>(options =>
                 {
-                    options.Password.RequireDigit = false; // No numbers required
-                    options.Password.RequireLowercase = false; // No lowercase required
-                    options.Password.RequireUppercase = false; // No uppercase required
-                    options.Password.RequireNonAlphanumeric = false; // No special characters required
+                    options.Password.RequireDigit = false; 
+                    options.Password.RequireLowercase = false; 
+                    options.Password.RequireUppercase = false; 
+                    options.Password.RequireNonAlphanumeric = false; 
                     options.Password.RequiredLength = 1;
-                    //options.User.RequireUniqueEmail = true;  // Ensure email is unique
-                    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@";  // Allow emails with the standard format
-                    //options.User.RequireUniqueEmail = true;
+                    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@"; 
                     
                 })
                 .AddEntityFrameworkStores<HotelContext>()

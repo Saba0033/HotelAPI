@@ -94,7 +94,7 @@ namespace HotelServices.Services
 
         }
 
-        private async Task ValidateEntityAsync(TEntity entity)
+        public async Task ValidateEntityAsync(TEntity entity)
         {
             var validationResult = await _validator.ValidateAsync(entity);
             if (!validationResult.IsValid)

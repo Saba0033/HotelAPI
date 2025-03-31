@@ -34,6 +34,7 @@ namespace HotelServices.Services
 
         public override async Task UpdateAsync(RoomForUpdateDTO entity)
         {
+            await base.ValidateEntityAsync(entity.Adapt<Room>());
             var room = await GetAsyncWithoutDTO(x => x.RoomId == entity.RoomId);
             if (room == null) throw new ArgumentException("Room not found");
             if (entity.Name != null) room.Name = entity.Name;

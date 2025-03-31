@@ -187,7 +187,7 @@ namespace HotelRepository.Data
                     .HasForeignKey(r => r.RoomId);
             });
         }
-
+        
         private static void ConfigureRooms(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Room>(entity =>
@@ -211,6 +211,7 @@ namespace HotelRepository.Data
                     .OnDelete(DeleteBehavior.Cascade);
             });
         }
+
         private static void ConfigureIdentityNames(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>(e => e.ToTable("Users/Customers"));
@@ -448,8 +449,8 @@ namespace HotelRepository.Data
                 new Customer
                 {
                     Id = CustomerGuid5,
-                    FirstName = "Ana",
-                    LastName = "Kavtaradze",
+                    FirstName = "Tinatin",
+                    LastName = "Jagashvili",
                     IdentityNumber = "12345678905",
                     Email = "Ana@gmail.com",
                     UserName = "Ana@gmail.com",
@@ -507,7 +508,6 @@ namespace HotelRepository.Data
                 }
             );
         }
-
 
         private static void SeedReservations(ModelBuilder modelBuilder)
         {

@@ -19,8 +19,7 @@ namespace HotelAPI.Controllers
         IManagerService managerService,
         IAuthService authService) : ControllerBase
     {
-        //To DO
-        // customer and room delete, 4,5    
+          
         [HttpGet]
         public async Task<ActionResult<List<Hotel>>> GetAllAsync()
         {
