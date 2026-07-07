@@ -44,7 +44,7 @@ public class EmailService : IEmailService
         using (var client = new MailKit.Net.Smtp.SmtpClient())
         {
             await client.ConnectAsync(_emailSettings.Host, _emailSettings.Port, false);
-            await client.AuthenticateAsync(_emailSettings.Username, "misq httk gtnt daap");
+            await client.AuthenticateAsync(_emailSettings.Username, "");
             await client.SendAsync(emailMessage);
             await client.DisconnectAsync(true);
         }
